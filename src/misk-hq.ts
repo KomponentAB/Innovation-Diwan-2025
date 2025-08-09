@@ -32,5 +32,13 @@ function closePopup(){
         currentPopup = undefined;
     }
 }
+WA.onInit().then(() => {
+WA.room.onEnterLayer('foreground/roof/roof_2').subscribe(() => {
+    WA.room.hideLayer('foreground/roof/roof_0');
+    WA.room.hideLayer('foreground/roof/roof_1');
+    WA.room.hideLayer('foreground/roof/roof_2');
+    WA.room.showLayer('background/floors/glasswall');
+});});
+
 
 export {};
