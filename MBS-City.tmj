@@ -2542,6 +2542,38 @@
                  "width":0,
                  "x":928.234286893103,
                  "y":1654.9502018648
+                }, 
+                {
+                 "height":71.6123,
+                 "id":290,
+                 "name":"website",
+                 "properties":[
+                        {
+                         "name":"openWebsite",
+                         "type":"string",
+                         "value":".\/The Organized Shelf.html"
+                        }, 
+                        {
+                         "name":"openWebsiteAllowApi",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"openWebsiteTrigger",
+                         "type":"string",
+                         "value":"onaction"
+                        }, 
+                        {
+                         "name":"openWebsiteTriggerMessage",
+                         "type":"string",
+                         "value":"Press SPACE or touch here to open a custom website"
+                        }],
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":96,
+                 "x":888.693374076396,
+                 "y":91.5922473815706
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -4396,7 +4428,7 @@
          "y":0
         }],
  "nextlayerid":171,
- "nextobjectid":289,
+ "nextobjectid":291,
  "orientation":"orthogonal",
  "properties":[
         {
