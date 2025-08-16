@@ -6,7 +6,6 @@
 
   script.onload = () => {
     console.log("External iframe API loaded.");
-   
   };
   document.head.appendChild(script);
 
@@ -18,19 +17,17 @@
   ) {
     console.log("🚩 Completion Event Script loaded");
     WA.onInit().then(() => {
-      console.log(workbookName+" geladen", messageNpc);
+      console.log(workbookName + " geladen", messageNpc);
       const checkState = () => {
-          try {
-              const stateValue = WA.player.state[workbookName];
-                  if (stateValue === "solved") {
-                      WA.chat.sendChatMessage(returnMessage, messageNpc);
-                  }
-              } 
-          catch (error) {
+        try {
+          const stateValue = WA.player.state[workbookName];
+          if (stateValue === "solved") {
+            WA.chat.sendChatMessage(returnMessage, messageNpc);
           }
+        } catch (error) {}
       };
       checkState();
-  });
+    });
 
     // Validate H5P and externalDispatcher
     if (!window.H5P || !H5P.externalDispatcher) {
@@ -56,8 +53,11 @@
         );
         if (WA.player.state[workbookName] !== "solved") {
           WA.player.state[workbookName] = "solved";
-          console.log( workbookName + "🚩 State variable has been changed to solved: " );
+          console.log(
+            workbookName + "🚩 State variable has been changed to solved: "
+          );
           WA.chat.sendChatMessage(completionMessage, messageNpc);
+          levelUp("companion", 1);
           setTimeout(async () => {
             const cowebsites = await WA.nav.getCoWebSites();
             for (const cowebsite of cowebsites) {
