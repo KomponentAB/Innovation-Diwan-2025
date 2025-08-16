@@ -1,5 +1,6 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
+import { levelUp } from "@workadventure/quests";
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 
 console.log("Script started successfully");
@@ -212,6 +213,7 @@ WA.onInit().then(() => {
                 "Dr. Aida"
               );
               console.log("Level up placeholder: All trash collected!");
+              levelUp("companion", 1);
             } else {
               WA.chat.sendChatMessage(
                 `لقد التقطت بعض القمامة! (${collectedCount} من 4)`,
@@ -227,6 +229,24 @@ WA.onInit().then(() => {
   } else {
     console.warn("WA API not available for trash pickup feature.");
   }
+});
+
+WA.onInit().then(() => {
+  const layerMessages: { [layer: string]: string } = {
+    researchRoom: "مرحبًا بك في غرفة البحث! هنا يمكنك استكشاف الأفكار الجديدة.",
+    gameRoom: "مرحبًا بك في غرفة الألعاب! استمتع بالتحديات والتجارب الممتعة.",
+  };
+
+  Object.entries(layerMessages).forEach(([layer, message]) => {
+    WA.room.area.onEnter(layer).subscribe(() => {
+      const visitKey = `visited_${layer}`;
+      if (!WA.player.state[visitKey]) {
+        WA.chat.sendChatMessage(message, "Dr. Aida");
+        levelUp("companion", 1);
+        WA.player.state[visitKey] = true;
+      }
+    });
+  });
 });
 
 export {};
