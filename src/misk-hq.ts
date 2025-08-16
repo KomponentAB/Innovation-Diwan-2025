@@ -37,6 +37,7 @@ function closePopup() {
 }
 WA.onInit().then(() => {
   WA.room.onLeaveLayer("hideRoof").subscribe(() => {
+    console.log("Hiding roof layers");
     WA.room.hideLayer("foreground/roof/roof_0");
     WA.room.hideLayer("foreground/roof/roof_1");
     WA.room.hideLayer("foreground/roof/roof_2");
@@ -44,6 +45,7 @@ WA.onInit().then(() => {
   });
 
   WA.room.onEnterLayer("hideRoof").subscribe(() => {
+    console.log("Showing roof layers");
     WA.room.showLayer("foreground/roof/roof_0");
     WA.room.showLayer("foreground/roof/roof_1");
     WA.room.showLayer("foreground/roof/roof_2");
