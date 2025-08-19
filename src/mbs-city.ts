@@ -310,10 +310,10 @@ WA.onInit().then(() => {
     const playerName: string = WA.player.name || "Player";
     WA.chat.sendChatMessage(
       `Hello, ${playerName}! Can you help me please?`,
-      "Barber"
+      "Ali"
     );
     const triggerMessage = WA.ui.displayActionMessage({
-      message: "Press [SPACE] to talk to Barber.",
+      message: "Press [SPACE] to help with diabetic needs.",
       callback: async () => {
         await WA.nav.openCoWebSite(
           "https://komponentab.github.io/Innovation-Diwan-2025/balancedMeal.html",
@@ -327,8 +327,11 @@ WA.onInit().then(() => {
         triggerMessage.remove();
       },
     });
-  });
-});
+  });}
+
+);
+
+
 
 // Quest 3 logic
 WA.onInit().then(() => {
