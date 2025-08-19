@@ -4128,17 +4128,17 @@
         {
          "name":"mapDescription",
          "type":"string",
-         "value":"Policython virtual event map"
+         "value":"Innovation Diwan 2025"
         }, 
         {
          "name":"mapImage",
          "type":"string",
-         "value":"map.png"
+         "value":"MBS-City.png"
         }, 
         {
          "name":"mapName",
          "type":"string",
-         "value":"Policython"
+         "value":"MBS-City"
         }, 
         {
          "name":"script",
