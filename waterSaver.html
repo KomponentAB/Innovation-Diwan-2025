@@ -9,10 +9,10 @@
    <script src = "../scripts/workadventure-iframe-fixed.js"></script> 
         <script>
 
-            const completionMessage = "Thank you for helping me with the pipes!"; //Enter the completion message here
-            const messageNpc = "Aida"; //default "Zirze"
+            const completionMessage = "شكراً لمساعدتي في إصلاح الأنابيب!"; //Enter the completion message here
+            const messageNpc = "Noor the Engineer"; //default "Zirze"
             const workbookName = "quest11"; //Enter Workbookname here
-            const returnMessage = "Good Luck on your Journey!"; //Enter the return message here, its the message players receive on completion and when they return to the chamber
+            const returnMessage = "حظًا سعيدًا في رحلتك!"; //Enter the return message here, its the message players receive on completion and when they return to the chamber
         </script>
 
 
@@ -52,7 +52,23 @@ H5P.RequestQueue=function(n,t){function e(e){t.call(this),this.processingQueue=!
     //dont change anything here. just copy/paste
                         handleModuleCompletionEvents(completionMessage, messageNpc, workbookName, returnMessage );
 </script>
-   
+   <style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: rgb(0, 99, 91) !important; /* #00635B */
+  }
+
+  /* Make common H5P wrappers transparent on the host page */
+  .h5p-container,
+  .h5p-content,
+  .h5p-iframe-wrapper,
+  .h5p-frame,
+  .h5p-core-wrapper,
+  iframe.h5p-iframe {
+    background: transparent !important;
+  }
+</style>
 
 </head>
     <body>
