@@ -57,7 +57,12 @@
             workbookName + "🚩 State variable has been changed to solved: "
           );
           WA.chat.sendChatMessage(completionMessage, messageNpc);
-          levelUp("companion", 1);
+           const currentProgress = Number(WA.player.state.companionProgress) || 0;
+    WA.player.state.companionProgress = currentProgress + 1;
+    levelUp("companion", 1);
+    console.log(
+      `Companion progress incremented to: ${WA.player.state.companionProgress}`
+    );
           setTimeout(async () => {
             const cowebsites = await WA.nav.getCoWebSites();
             for (const cowebsite of cowebsites) {
