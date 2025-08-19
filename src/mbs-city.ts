@@ -295,10 +295,8 @@ WA.onInit().then(() => {
           triggerMessage.remove();
         },
       });
-      WA.room.area.onLeave("quest1").subscribe({
-        next: () => {
-          WA.chat.close();
-        },
+      WA.room.area.onLeave("quest1").subscribe(() => {
+        WA.chat.close();
       });
     }
   });
@@ -306,32 +304,63 @@ WA.onInit().then(() => {
 
 // Quest 2 logic
 WA.onInit().then(() => {
+  WA.player.state.onVariableChange("quest2").subscribe((newValue) => {
+    if (newValue === "solved") {
+      incrementCompanionProgress();
+    }
+  });
+});
+
+WA.onInit().then(() => {
   WA.room.area.onEnter("quest2").subscribe(() => {
-    const playerName: string = WA.player.name || "Player";
-    WA.chat.sendChatMessage(
-      `Hello, ${playerName}! Can you help me please?`,
-      "Ali"
-    );
-    const triggerMessage = WA.ui.displayActionMessage({
-      message: "Press [SPACE] to help with diabetic needs.",
-      callback: async () => {
-        await WA.nav.openCoWebSite(
-          "https://komponentab.github.io/Innovation-Diwan-2025/balancedMeal.html",
-          true,
-          "",
-          70,
-          1,
-          true,
-          true
-        );
-        triggerMessage.remove();
-      },
-    });
-  });}
+    if (WA.player.state.quest2 === "solved") {
+      handleQuest2Solved();
+    } else {
+      handleQuest2Start();
+    }
+  });
+});
 
-);
+function handleQuest2Solved() {
+  WA.chat.sendChatMessage(
+    "Thank you for helping with the diabetic needs earlier!",
+    "Ali"
+  );
+}
 
+function handleQuest2Start() {
+  const playerName: string = WA.player.name || "Player";
+  WA.chat.sendChatMessage(
+    `Hello, ${playerName}! Can you help me please?`,
+    "Ali"
+  );
 
+  const triggerMessage = WA.ui.displayActionMessage({
+    message: "Press [SPACE] to help with diabetic needs.",
+    callback: async () => {
+      const coWebsite = await WA.nav.openCoWebSite(
+        "../balancedMeal.html",
+        true,
+        "",
+        70,
+        1,
+        true,
+        true
+      );
+      triggerMessage.remove();
+      setupQuest2LeaveHandler(coWebsite);
+    },
+  });
+}
+
+function setupQuest2LeaveHandler(coWebsite: any) {
+  WA.room.area.onLeave("quest2").subscribe({
+    next: () => {
+      WA.chat.close();
+      coWebsite.close();
+    },
+  });
+}
 
 // Quest 3 logic
 WA.onInit().then(() => {
@@ -362,53 +391,131 @@ WA.onInit().then(() => {
             );
             WA.player.state.quest3 = "started";
             WA.room.showLayer("background/furnitures/scissor");
+            WA.room.onEnterLayer("background/furnitures/scissor").subscribe({
+              next: () => {
+                WA.player.state.quest3 = "solved";
+                WA.chat.sendChatMessage(
+                  "Thanks for finding my scissor",
+                  "Barber"
+                );
+                WA.room.hideLayer("background/furnitures/scissor");
+                incrementCompanionProgress();
+              },
+            });
           },
         });
 
         WA.room.area.onLeave("quest3").subscribe({
           next: () => {
             triggerMessage.remove();
-            WA.chat.close();
           },
         });
       }
     },
   });
+  WA.room.area.onLeave("quest3").subscribe({
+    next: () => {
+      WA.chat.close();
+    },
+  });
 });
 
 WA.onInit().then(() => {
-  if (WA.player.state.quest3 === "started") {
-    WA.room.onEnterLayer("background/furnitures/scissor").subscribe({
+  const layer = "background/furnitures/scissor";
+  const quest3 = WA.player.state.quest3;
+
+  // Hide when quest3 is null/undefined/solved
+  if (quest3 === null || quest3 === undefined || quest3 === "solved") {
+    WA.room.hideLayer(layer);
+  }
+
+  // When quest3 is started: show + listen
+  if (quest3 === "started") {
+    WA.room.showLayer(layer);
+
+    const sub = WA.room.onEnterLayer(layer).subscribe({
       next: () => {
         WA.player.state.quest3 = "solved";
         WA.chat.sendChatMessage("Thanks for finding my scissor", "Barber");
-        WA.room.hideLayer("background/furnitures/scissor");
+        WA.room.hideLayer(layer);
         incrementCompanionProgress();
+
+        // prevent multiple triggers
+        sub.unsubscribe?.();
       },
     });
-  } else if (WA.player.state.quest3 !== "solved") {
-    WA.room.hideLayer("background/furnitures/scissor");
   }
 });
 
-//Quest 5 and 13 Logic
-WA.onInit().then(() => {
-  const layerMessages: { [layer: string]: string } = {
-    researchRoom: "مرحبًا بك في غرفة البحث! هنا يمكنك استكشاف الأفكار الجديدة.",
-    gameRoom: "مرحبًا بك في غرفة الألعاب! استمتع بالتحديات والتجارب الممتعة.",
-  };
+// Quest 4 logic
 
-  Object.entries(layerMessages).forEach(([layer, message]) => {
-    WA.room.area.onEnter(layer).subscribe(() => {
-      const visitKey = `visited_${layer}`;
-      if (!WA.player.state[visitKey]) {
-        WA.chat.sendChatMessage(message, "Dr. Aida");
-        incrementCompanionProgress();
-        WA.player.state[visitKey] = true;
-      }
-    });
+// Quest 5 logic
+
+WA.onInit().then(() => {
+  WA.room.area.onEnter("quest5").subscribe(() => {
+    if (WA.player.state["quest5"] !== "solved") {
+      WA.chat.sendChatMessage(
+        "مرحبًا بك في غرفة البحث! هنا يمكنك استكشاف الأفكار الجديدة.",
+        "Aida"
+      );
+      WA.player.state.quest5 = "solved";
+      incrementCompanionProgress();
+    }
   });
 });
+
+// Quest 8 Logic
+
+WA.onInit().then(() => {
+  WA.room.area.onEnter("quest8").subscribe(() => {
+    if (WA.player.state.quest8 === "solved") {
+      handleQuest8Solved();
+    } else {
+      handleQuest8Start();
+    }
+  });
+});
+
+function handleQuest8Solved() {
+  WA.chat.sendChatMessage(
+    "Thank you for helping with the shoes earlier!",
+    "Ali"
+  );
+}
+
+function handleQuest8Start() {
+  const playerName: string = WA.player.name || "Player";
+  WA.chat.sendChatMessage(
+    `Hello, ${playerName}! Can you help me please?`,
+    "Ali"
+  );
+
+  const triggerMessage = WA.ui.displayActionMessage({
+    message: "Press [SPACE] to help to find the matching shoes.",
+    callback: async () => {
+      const coWebsite = await WA.nav.openCoWebSite(
+        "../organizedShelf.html",
+        true,
+        "",
+        70,
+        1,
+        true,
+        true
+      );
+      triggerMessage.remove();
+      setupQuest8LeaveHandler(coWebsite);
+    },
+  });
+}
+
+function setupQuest8LeaveHandler(coWebsite: any) {
+  WA.room.area.onLeave("quest8").subscribe({
+    next: () => {
+      WA.chat.close();
+      coWebsite.close();
+    },
+  });
+}
 
 // Quest 9 Logic
 
@@ -499,6 +606,73 @@ WA.onInit().then(() => {
   } else {
     console.warn("WA API not available for trash pickup feature.");
   }
+});
+
+// Quest 11 Logic
+
+WA.onInit().then(() => {
+  WA.room.area.onEnter("quest11").subscribe(() => {
+    if (WA.player.state.quest11 === "solved") {
+      handleQuest11Solved();
+    } else {
+      handleQuest11Start();
+    }
+  });
+});
+
+function handleQuest11Solved() {
+  WA.chat.sendChatMessage(
+    "Thank you for helping with the pipes earlier!",
+    "Ali"
+  );
+}
+
+function handleQuest11Start() {
+  const playerName: string = WA.player.name || "Player";
+  WA.chat.sendChatMessage(
+    `Hello, ${playerName}! Can you help me please?`,
+    "Aida"
+  );
+
+  const triggerMessage = WA.ui.displayActionMessage({
+    message: "Press [SPACE] to help withe leaking pipes",
+    callback: async () => {
+      const coWebsite = await WA.nav.openCoWebSite(
+        "../waterSaver.html",
+        true,
+        "",
+        70,
+        1,
+        true,
+        true
+      );
+      triggerMessage.remove();
+      setupQuest11LeaveHandler(coWebsite);
+    },
+  });
+}
+
+function setupQuest11LeaveHandler(coWebsite: any) {
+  WA.room.area.onLeave("quest11").subscribe({
+    next: () => {
+      WA.chat.close();
+      coWebsite.close();
+    },
+  });
+}
+
+// Quest 13 logic
+WA.onInit().then(() => {
+  WA.room.area.onEnter("quest13").subscribe(() => {
+    if (WA.player.state["quest13"] !== "solved") {
+      WA.chat.sendChatMessage(
+        "مرحبًا بك في غرفة البحث! هنا يمكنك استكشاف الأفكار الجديدة.",
+        "Aida"
+      );
+      WA.player.state.quest13 = "solved";
+      incrementCompanionProgress();
+    }
+  });
 });
 
 export {};
