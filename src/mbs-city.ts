@@ -608,6 +608,62 @@ WA.onInit().then(() => {
   }
 });
 
+
+// Quest 10 Logic
+
+WA.onInit().then(() => {
+  WA.room.area.onEnter("quest10").subscribe(() => {
+    if (WA.player.state.quest10 === "solved") {
+      handleQuest10Solved();
+    } else {
+      handleQuest10Start();
+    }
+  });
+});
+
+function handleQuest10Solved() {
+  WA.chat.sendChatMessage(
+    "Thank you for helping with places for retreat.",
+    "Ali"
+  );
+}
+
+function handleQuest10Start() {
+  const playerName: string = WA.player.name || "Player";
+  WA.chat.sendChatMessage(
+    `Hello, ${playerName}! Can you help me please?`,
+    "Aida"
+  );
+
+  const triggerMessage = WA.ui.displayActionMessage({
+    message: "Press [SPACE] to help finding a place to retreat.",
+    callback: async () => {
+      const coWebsite = await WA.nav.openCoWebSite(
+        "../retreat.html",
+        true,
+        "",
+        70,
+        1,
+        true,
+        true
+      );
+      triggerMessage.remove();
+      setupQuest10LeaveHandler(coWebsite);
+    },
+  });
+}
+
+function setupQuest10LeaveHandler(coWebsite: any) {
+  WA.room.area.onLeave("quest10").subscribe({
+    next: () => {
+      WA.chat.close();
+      coWebsite.close();
+    },
+  });
+}
+
+
+
 // Quest 11 Logic
 
 WA.onInit().then(() => {
@@ -635,7 +691,7 @@ function handleQuest11Start() {
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
-    message: "Press [SPACE] to help withe leaking pipes",
+    message: "Press [SPACE] to help with the leaking pipes",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
         "../waterSaver.html",
