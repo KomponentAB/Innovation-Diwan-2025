@@ -57,18 +57,19 @@
             workbookName + "🚩 State variable has been changed to solved: "
           );
           WA.chat.sendChatMessage(completionMessage, messageNpc);
-           const currentProgress = Number(WA.player.state.companionProgress) || 0;
-    WA.player.state.companionProgress = currentProgress + 1;
-    levelUp("companion", 1);
-    console.log(
-      `Companion progress incremented to: ${WA.player.state.companionProgress}`
-    );
+
+          console.log(
+            "🚩 Completion message sent: " +
+              completionMessage +
+              " to " +
+              messageNpc
+          );
           setTimeout(async () => {
-            const cowebsites = await WA.nav.getCoWebSites();
-            for (const cowebsite of cowebsites) {
-              cowebsite.close();
+            const coWebsites = await WA.nav.getCoWebSites();
+            for (const coWebsite of coWebsites) {
+              coWebsite.close();
             }
-          }, 120000); // Close all co-websites after 2 minutes
+          }, 10000); // Close all co-websites after 10 seconds
         }
       }
     });
