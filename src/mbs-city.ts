@@ -89,36 +89,36 @@ WA.onInit().then(() => {
   if (WA.player.state.companionProgress === 1) {
     WA.chat.sendChatMessage(
       "congratulations, you've unlocked your first level of your companion. Navigate to the menu on top of your screen, select  'Add companion' and choose your companion",
-      "Dr. Aida"
+      "Aida"
     );
     WA.chat.sendChatMessage(
       `
 ![Companion Level 1 Unlocked](https://media.cleanshot.cloud/media/94698/hmqGflL1hnnhqcEM6fpWFc91BHeJvJKEAsB42ZZe.jpeg?Expires=1755620926&Signature=mAY5pW3DlY7iQES2vnMQso-xUJK63W1pdd1LHloDr56-r4oplN~eX8Wc9oJuSwcGEKbI~YqxjuMF-EoqXJr7sHJy~Mv1G3RYjJGjUV4YfgjUScEHbBTBfve5L1fLV3pkU0auuCuS0G~FY~S882IdaMbdDHcmx-5cyAI0IaAuGGac4hq7JyNHgCFDYqUxrfv15oTxH2ZVW9VPNJFkGqCaj~IliKyAKUJkVLblGiJxHHNG3YYw-jejG55CCoMKM0cF8fztJQoSI22LmQ6b81w-m~LND9TwIFtSlxKstNPOBdSW~n26cz6zZDSep21CVwUqzcJlzn-7KQBHdTEY7gbaVA__&Key-Pair-Id=K269JMAT9ZF4GZ)
       `,
-      "Dr. Aida"
+      "Aida"
     );
     if (Number(WA.player.state.companionProgress) === 6) {
       WA.chat.sendChatMessage(
         "congratulations, you've unlocked your second level of your companion. Navigate to the menu on top of your screen, select  'Add companion' and choose your companion",
-        "Dr. Aida"
+        "Aida"
       );
       WA.chat.sendChatMessage(
         `
 ![Companion Level 1 Unlocked](https://media.cleanshot.cloud/media/94698/hmqGflL1hnnhqcEM6fpWFc91BHeJvJKEAsB42ZZe.jpeg?Expires=1755620926&Signature=mAY5pW3DlY7iQES2vnMQso-xUJK63W1pdd1LHloDr56-r4oplN~eX8Wc9oJuSwcGEKbI~YqxjuMF-EoqXJr7sHJy~Mv1G3RYjJGjUV4YfgjUScEHbBTBfve5L1fLV3pkU0auuCuS0G~FY~S882IdaMbdDHcmx-5cyAI0IaAuGGac4hq7JyNHgCFDYqUxrfv15oTxH2ZVW9VPNJFkGqCaj~IliKyAKUJkVLblGiJxHHNG3YYw-jejG55CCoMKM0cF8fztJQoSI22LmQ6b81w-m~LND9TwIFtSlxKstNPOBdSW~n26cz6zZDSep21CVwUqzcJlzn-7KQBHdTEY7gbaVA__&Key-Pair-Id=K269JMAT9ZF4GZ)
       `,
-        "Dr. Aida"
+        "Aida"
       );
     }
     if (Number(WA.player.state.companionProgress) === 12) {
       WA.chat.sendChatMessage(
         "congratulations, you've unlocked your third level of your companion. Navigate to the menu on top of your screen, select  'Add companion' and choose your companion",
-        "Dr. Aida"
+        "Aida"
       );
       WA.chat.sendChatMessage(
         `
 ![Companion Level 1 Unlocked](https://media.cleanshot.cloud/media/94698/hmqGflL1hnnhqcEM6fpWFc91BHeJvJKEAsB42ZZe.jpeg?Expires=1755620926&Signature=mAY5pW3DlY7iQES2vnMQso-xUJK63W1pdd1LHloDr56-r4oplN~eX8Wc9oJuSwcGEKbI~YqxjuMF-EoqXJr7sHJy~Mv1G3RYjJGjUV4YfgjUScEHbBTBfve5L1fLV3pkU0auuCuS0G~FY~S882IdaMbdDHcmx-5cyAI0IaAuGGac4hq7JyNHgCFDYqUxrfv15oTxH2ZVW9VPNJFkGqCaj~IliKyAKUJkVLblGiJxHHNG3YYw-jejG55CCoMKM0cF8fztJQoSI22LmQ6b81w-m~LND9TwIFtSlxKstNPOBdSW~n26cz6zZDSep21CVwUqzcJlzn-7KQBHdTEY7gbaVA__&Key-Pair-Id=K269JMAT9ZF4GZ)
       `,
-        "Dr. Aida"
+        "Aida"
       );
     }
   }
@@ -127,21 +127,21 @@ WA.onInit().then(() => {
 WA.onInit().then(() => {
   WA.player.state.onVariableChange("companionProgress").subscribe((value) => {
     if (value === 1) {
-      WA.chat.sendChatMessage("we are refreshing your page", "Dr. Aida");
+      WA.chat.sendChatMessage("we are refreshing your page", "Aida");
       setTimeout(() => {
         WA.nav.goToPage(
           "https://play.workadventu.re/_/6jxklszz2gs/localhost:5173/MBS-City.tmj"
         );
       }, 6000);
     } else if (value === 6) {
-      WA.chat.sendChatMessage("we are refreshing your page", "Dr. Aida");
+      WA.chat.sendChatMessage("we are refreshing your page", "Aida");
       setTimeout(() => {
         WA.nav.goToPage(
           "https://play.workadventu.re/_/6jxklszz2gs/localhost:5173/MBS-City.tmj"
         );
       }, 1000);
     } else if (value === 12) {
-      WA.chat.sendChatMessage("we are refreshing your page", "Dr. Aida");
+      WA.chat.sendChatMessage("we are refreshing your page", "Aida");
       setTimeout(() => {
         WA.nav.goToPage(
           "https://play.workadventu.re/_/6jxklszz2gs/localhost:5173/MBS-City.tmj"
@@ -278,18 +278,18 @@ WA.onInit().then(() => {
   WA.room.area.onEnter("quest1").subscribe(() => {
     if (WA.player.state["quest1"] === "solved") {
       WA.chat.sendChatMessage(
-        "Thank you for speaking with me earlier! Your journey has begun. I hope you and your companion like eachother",
-        "Dr. Aida"
+        "رحلتك قد بدأت. آمل أن تتوافق أنت ورفيقك مع بعضكما البعض.",
+        "Aida"
       );
     } else {
-      WA.chat.sendChatMessage("welcome to the companion journey", "Dr. Aida");
+      WA.chat.sendChatMessage("مرحبًا بكم في رحلة الرفقة في MBS-City، اسمي د. عايدة. أقوم بأبحاث حول الرفقاء وكيفية تطورهم.", "Aida");
       const triggerMessage = WA.ui.displayActionMessage({
         message: "Press [SPACE] to speak with Dr. Aida.",
         callback: () => {
           incrementCompanionProgress();
           WA.chat.sendChatMessage(
-            "Welcome! Your journey begins now. Best of luck! I hope you and your companion like eachother",
-            "Dr. Aida"
+            "مرحبًا! تبدأ رحلة رفاقك الآن. يمكنك اختيار واحد من أربعة رفاق من القائمة. مع كل استكشاف ومهمة تحلها في MBS-City، يتطور رفيقك. حظًا سعيدًا! آمل أن تتوافق أنت ورفيقك مع بعضكما البعض.",
+            "Aida"
           );
           WA.player.state.quest1 = "solved";
           triggerMessage.remove();
@@ -323,16 +323,16 @@ WA.onInit().then(() => {
 
 function handleQuest2Solved() {
   WA.chat.sendChatMessage(
-    "Thank you for helping with the diabetic needs earlier!",
-    "Ali"
+    "شكراً لمساعدتك في تلبية احتياجات مرضى السكري في وقت سابق!",
+    "Amal the Nutritionist "
   );
 }
 
 function handleQuest2Start() {
   const playerName: string = WA.player.name || "Player";
   WA.chat.sendChatMessage(
-    `Hello, ${playerName}! Can you help me please?`,
-    "Ali"
+    `مرحباً، ${playerName}! هل يمكنك مساعدتي من فضلك؟`,
+    "Amal the Nutritionist "
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
@@ -369,25 +369,25 @@ WA.onInit().then(() => {
       const playerName: string = WA.player.name;
       if (WA.player.state["quest3"] === "solved") {
         WA.chat.sendChatMessage(
-          `Thank you for your help ${playerName}!`,
-          "Barber"
+          `شكراً على مساعدتك ${playerName}!`,
+          "Fahd the Barber"
         );
       } else if (WA.player.state["quest3"] === "started") {
         WA.chat.sendChatMessage(
-          "Ive must have lost my scissors at a table somewhere nearby.",
-          "Barber"
+          "لا بد أنني أضعت مقصّي على طاولة في مكان قريب.",
+          "Fahd the Barber"
         );
       } else {
         WA.chat.sendChatMessage(
-          `Hello, ${playerName}! Can you help me please?`,
-          "Barber"
+          `مرحباً، ${playerName}! هل يمكنك مساعدتي من فضلك؟`,
+          "Fahd the Barber"
         );
         const triggerMessage = WA.ui.displayActionMessage({
-          message: "Press [SPACE] to talk to Barber.",
+          message: "اضغط على [SPACE] للتحدث إلى باربر.",
           callback: () => {
             WA.chat.sendChatMessage(
-              "Ive must have lost my scissors at a table somewhere nearby.",
-              "Barber"
+              "لا بد أنني أضعت مقصّي على طاولة في مكان قريب.",
+              "Fahd the Barber"
             );
             WA.player.state.quest3 = "started";
             WA.room.showLayer("background/furnitures/scissor");
@@ -395,8 +395,8 @@ WA.onInit().then(() => {
               next: () => {
                 WA.player.state.quest3 = "solved";
                 WA.chat.sendChatMessage(
-                  "Thanks for finding my scissor",
-                  "Barber"
+                  "شكراً على العثور على مقصاتي",
+                  "Fahd the Barber"
                 );
                 WA.room.hideLayer("background/furnitures/scissor");
                 incrementCompanionProgress();
@@ -436,7 +436,7 @@ WA.onInit().then(() => {
     const sub = WA.room.onEnterLayer(layer).subscribe({
       next: () => {
         WA.player.state.quest3 = "solved";
-        WA.chat.sendChatMessage("Thanks for finding my scissor", "Barber");
+        WA.chat.sendChatMessage("شكراً على العثور على مقصاتي", "Fahd the Barber");
         WA.room.hideLayer(layer);
         incrementCompanionProgress();
 
@@ -448,6 +448,69 @@ WA.onInit().then(() => {
 });
 
 // Quest 4 logic
+
+WA.onInit().then(() => {
+  WA.player.state.onVariableChange("quest4").subscribe((newValue) => {
+    if (newValue === "solved") {
+      incrementCompanionProgress();
+    }
+  });
+});
+
+
+WA.onInit().then(() => {
+  WA.room.area.onEnter("quest4").subscribe(() => {
+    if (WA.player.state.quest4 === "solved") {
+      handleQuest4Solved();
+    } else {
+      handleQuest4Start();
+    }
+  });
+});
+
+function handleQuest4Solved() {
+  WA.chat.sendChatMessage(
+    "شكراً لمساعدتكم في حالات الطوارئ!",
+    "Yasir the Paramedic"
+  );
+}
+
+function handleQuest4Start() {
+  const playerName: string = WA.player.name || "Player";
+  WA.chat.sendChatMessage(
+    `Hello, ${playerName}! Can you help me please?`,
+    "Yasir the Paramedic"
+  );
+
+  const triggerMessage = WA.ui.displayActionMessage({
+    message: "اضغط على [SPACE] للمساعدة في حل حالات الطوارئ.",
+    callback: async () => {
+      const coWebsite = await WA.nav.openCoWebSite(
+        "../paramedic.html",
+        true,
+        "",
+        70,
+        1,
+        true,
+        true
+      );
+      triggerMessage.remove();
+      setupQuest4LeaveHandler(coWebsite);
+    },
+  });
+}
+
+function setupQuest4LeaveHandler(coWebsite: any) {
+  WA.room.area.onLeave("quest4").subscribe({
+    next: () => {
+      WA.chat.close();
+      coWebsite.close();
+    },
+  });
+}
+
+
+
 
 // Quest 5 logic
 
@@ -465,6 +528,14 @@ WA.onInit().then(() => {
 });
 
 // Quest 8 Logic
+WA.onInit().then(() => {
+  WA.player.state.onVariableChange("quest8").subscribe((newValue) => {
+    if (newValue === "solved") {
+      incrementCompanionProgress();
+    }
+  });
+});
+
 
 WA.onInit().then(() => {
   WA.room.area.onEnter("quest8").subscribe(() => {
@@ -478,20 +549,20 @@ WA.onInit().then(() => {
 
 function handleQuest8Solved() {
   WA.chat.sendChatMessage(
-    "Thank you for helping with the shoes earlier!",
-    "Ali"
+    "شكراً لمساعدتك في اختيار الأحذية سابقاً!",
+    "Rami the Pilgrim"
   );
 }
 
 function handleQuest8Start() {
   const playerName: string = WA.player.name || "Player";
   WA.chat.sendChatMessage(
-    `Hello, ${playerName}! Can you help me please?`,
-    "Ali"
+    `مرحباً، ${playerName}! هل يمكنك مساعدتي من فضلك؟`,
+    "Rami the Pilgrim"
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
-    message: "Press [SPACE] to help to find the matching shoes.",
+    message: "اضغط على [SPACE] للمساعدة في العثور على الأحذية المطابقة.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
         "../organizedShelf.html",
@@ -587,14 +658,14 @@ WA.onInit().then(() => {
             if (collectedCount === trashTiles.length) {
               WA.chat.sendChatMessage(
                 "رائع! لقد جمعت كل القمامة! لقد حصلت على نقاط خبرة.",
-                "Dr. Aida"
+                "Aida"
               );
               console.log("Level up placeholder: All trash collected!");
               incrementCompanionProgress();
             } else {
               WA.chat.sendChatMessage(
                 `لقد التقطت بعض القمامة! (${collectedCount} من 4)`,
-                "Dr. Aida"
+                "Aida"
               );
             }
           }
@@ -610,6 +681,14 @@ WA.onInit().then(() => {
 
 
 // Quest 10 Logic
+WA.onInit().then(() => {
+  WA.player.state.onVariableChange("quest10").subscribe((newValue) => {
+    if (newValue === "solved") {
+      incrementCompanionProgress();
+    }
+  });
+});
+
 
 WA.onInit().then(() => {
   WA.room.area.onEnter("quest10").subscribe(() => {
@@ -623,23 +702,23 @@ WA.onInit().then(() => {
 
 function handleQuest10Solved() {
   WA.chat.sendChatMessage(
-    "Thank you for helping with places for retreat.",
-    "Ali"
+    "شكراً لمساعدتي في العثور على غرفة الصلاة",
+    "Omar the Caretaker "
   );
 }
 
 function handleQuest10Start() {
   const playerName: string = WA.player.name || "Player";
   WA.chat.sendChatMessage(
-    `Hello, ${playerName}! Can you help me please?`,
-    "Aida"
+    `مرحباً، ${playerName}! هل يمكنك مساعدتي من فضلك؟`,
+    "Omar the Caretaker "
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
-    message: "Press [SPACE] to help finding a place to retreat.",
+    message: "اضغط على [SPACE] للمساعدة في العثور على مكان للانسحاب.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
-        "../retreat.html",
+        "../guidingLight.html",
         true,
         "",
         70,
@@ -665,6 +744,14 @@ function setupQuest10LeaveHandler(coWebsite: any) {
 
 
 // Quest 11 Logic
+WA.onInit().then(() => {
+  WA.player.state.onVariableChange("quest11").subscribe((newValue) => {
+    if (newValue === "solved") {
+      incrementCompanionProgress();
+    }
+  });
+});
+
 
 WA.onInit().then(() => {
   WA.room.area.onEnter("quest11").subscribe(() => {
@@ -678,16 +765,16 @@ WA.onInit().then(() => {
 
 function handleQuest11Solved() {
   WA.chat.sendChatMessage(
-    "Thank you for helping with the pipes earlier!",
-    "Ali"
+    "شكراً لمساعدتك في إصلاح الأنابيب سابقاً!",
+    "Noor the Engineer"
   );
 }
 
 function handleQuest11Start() {
   const playerName: string = WA.player.name || "Player";
   WA.chat.sendChatMessage(
-    `Hello, ${playerName}! Can you help me please?`,
-    "Aida"
+    `مرحباً، ${playerName}! هل يمكنك مساعدتي من فضلك؟`,
+    "Noor the Engineer"
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
@@ -716,6 +803,69 @@ function setupQuest11LeaveHandler(coWebsite: any) {
     },
   });
 }
+
+// Quest 12 Logic
+WA.onInit().then(() => {
+  WA.player.state.onVariableChange("quest12").subscribe((newValue) => {
+    if (newValue === "solved") {
+      incrementCompanionProgress();
+    }
+  });
+});
+
+
+WA.onInit().then(() => {
+  WA.room.area.onEnter("quest12").subscribe(() => {
+    if (WA.player.state.quest12 === "solved") {
+      handleQuest12Solved();
+    } else {
+      handleQuest12Start();
+    }
+  });
+});
+
+function handleQuest12Solved() {
+  WA.chat.sendChatMessage(
+    "شكراً لمساعدتكم في إيجاد أماكن للاعتكاف.",
+    "Nasser the Elder"
+  );
+}
+
+function handleQuest12Start() {
+  const playerName: string = WA.player.name || "Player";
+  WA.chat.sendChatMessage(
+    `مرحباً، ${playerName}! هل يمكنك مساعدتي من فضلك؟`,
+    "Nasser the Elder"
+  );
+
+  const triggerMessage = WA.ui.displayActionMessage({
+    message: "اضغط على [SPACE] للمساعدة في العثور على مكان للانسحاب.",
+    callback: async () => {
+      const coWebsite = await WA.nav.openCoWebSite(
+        "../retreat.html",
+        true,
+        "",
+        70,
+        1,
+        true,
+        true
+      );
+      triggerMessage.remove();
+      setupQuest12LeaveHandler(coWebsite);
+    },
+  });
+}
+
+function setupQuest12LeaveHandler(coWebsite: any) {
+  WA.room.area.onLeave("quest12").subscribe({
+    next: () => {
+      WA.chat.close();
+      coWebsite.close();
+    },
+  });
+}
+
+
 
 // Quest 13 logic
 WA.onInit().then(() => {
