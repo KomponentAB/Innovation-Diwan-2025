@@ -69,6 +69,7 @@
             for (const coWebsite of coWebsites) {
               coWebsite.close();
             }
+            WA.chat.close();
           }, 10000); // Close all co-websites after 10 seconds
         }
       }
