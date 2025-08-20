@@ -32,7 +32,6 @@ async function incrementCompanionProgress() {
     console.error("Error incrementing companion progress:", error);
   }
 }
-
 let companionProgress = 0; // Initialize companionProgress
 
 // Watch for changes to companionProgress using WA.player.onVariableChange
@@ -64,59 +63,87 @@ const API_TOKEN =
 async function updateMemberTags(level: "lvl1" | "lvl2" | "lvl3") {
   const url = `${API_BASE}/members/${MEMBER_ID}`;
 
-  const response = await fetch(url, {
+  // Fetch existing tags
+  const getResponse = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: API_TOKEN, // no Bearer prefix
+      Accept: "application/json",
+    },
+  });
+
+  if (!getResponse.ok) {
+    const errorText = await getResponse.text();
+    throw new Error(
+      `GET request failed: ${getResponse.status} ${getResponse.statusText}\n${errorText}`
+    );
+  }
+
+  const memberData = await getResponse.json();
+  const existingTags: string[] = memberData.tags || [];
+
+  // Filter out "lvl1", "lvl2", "lvl3" from existing tags
+  const filteredTags = existingTags.filter(
+    (tag) => !["lvl1", "lvl2", "lvl3"].includes(tag)
+  );
+
+  // Add the new level tag
+  const updatedTags = [...filteredTags, level];
+
+  // Update tags with PATCH
+  const patchResponse = await fetch(url, {
     method: "PATCH",
     headers: {
       Authorization: API_TOKEN, // no Bearer prefix
       Accept: "application/json",
       "Content-Type": "application/merge-patch+json",
     },
-    body: JSON.stringify({ tags: [level] }),
+    body: JSON.stringify({ tags: updatedTags }),
   });
 
-  if (!response.ok) {
-    const errorText = await response.text();
+  if (!patchResponse.ok) {
+    const errorText = await patchResponse.text();
     throw new Error(
-      `Request failed: ${response.status} ${response.statusText}\n${errorText}`
+      `PATCH request failed: ${patchResponse.status} ${patchResponse.statusText}\n${errorText}`
     );
   }
 
-  const data = await response.json();
-  console.log("Updated member:", data);
+  const patchedData = await patchResponse.json();
+  console.log("Updated member:", patchedData);
 }
 
 WA.onInit().then(() => {
   if (WA.player.state.companionProgress === 1) {
     WA.chat.sendChatMessage(
-      "congratulations, you've unlocked your first level of your companion. Navigate to the menu on top of your screen, select  'Add companion' and choose your companion",
+      'تهانينا، لقد فتحت المستوى الثالث من رفيقك. انتقل إلى القائمة في أعلى الشاشة، وحدد "إضافة رفيق" واختر رفيقك.',
       "Aida"
     );
     WA.chat.sendChatMessage(
       `
-![Companion Level 1 Unlocked](https://media.cleanshot.cloud/media/94698/hmqGflL1hnnhqcEM6fpWFc91BHeJvJKEAsB42ZZe.jpeg?Expires=1755620926&Signature=mAY5pW3DlY7iQES2vnMQso-xUJK63W1pdd1LHloDr56-r4oplN~eX8Wc9oJuSwcGEKbI~YqxjuMF-EoqXJr7sHJy~Mv1G3RYjJGjUV4YfgjUScEHbBTBfve5L1fLV3pkU0auuCuS0G~FY~S882IdaMbdDHcmx-5cyAI0IaAuGGac4hq7JyNHgCFDYqUxrfv15oTxH2ZVW9VPNJFkGqCaj~IliKyAKUJkVLblGiJxHHNG3YYw-jejG55CCoMKM0cF8fztJQoSI22LmQ6b81w-m~LND9TwIFtSlxKstNPOBdSW~n26cz6zZDSep21CVwUqzcJlzn-7KQBHdTEY7gbaVA__&Key-Pair-Id=K269JMAT9ZF4GZ)
+![Companion Level 1 Unlocked](https://https://komponentab.github.io/Innovation-Diwan-2025/companion-tut.png)
       `,
       "Aida"
     );
     if (Number(WA.player.state.companionProgress) === 6) {
       WA.chat.sendChatMessage(
-        "congratulations, you've unlocked your second level of your companion. Navigate to the menu on top of your screen, select  'Add companion' and choose your companion",
+        'تهانينا، لقد فتحت المستوى الثالث من رفيقك. انتقل إلى القائمة في أعلى الشاشة، وحدد "إضافة رفيق" واختر رفيقك.',
         "Aida"
       );
       WA.chat.sendChatMessage(
         `
-![Companion Level 1 Unlocked](https://media.cleanshot.cloud/media/94698/hmqGflL1hnnhqcEM6fpWFc91BHeJvJKEAsB42ZZe.jpeg?Expires=1755620926&Signature=mAY5pW3DlY7iQES2vnMQso-xUJK63W1pdd1LHloDr56-r4oplN~eX8Wc9oJuSwcGEKbI~YqxjuMF-EoqXJr7sHJy~Mv1G3RYjJGjUV4YfgjUScEHbBTBfve5L1fLV3pkU0auuCuS0G~FY~S882IdaMbdDHcmx-5cyAI0IaAuGGac4hq7JyNHgCFDYqUxrfv15oTxH2ZVW9VPNJFkGqCaj~IliKyAKUJkVLblGiJxHHNG3YYw-jejG55CCoMKM0cF8fztJQoSI22LmQ6b81w-m~LND9TwIFtSlxKstNPOBdSW~n26cz6zZDSep21CVwUqzcJlzn-7KQBHdTEY7gbaVA__&Key-Pair-Id=K269JMAT9ZF4GZ)
+![Companion Level 1 Unlocked](https://https://komponentab.github.io/Innovation-Diwan-2025/companion-tut.png)
       `,
         "Aida"
       );
     }
     if (Number(WA.player.state.companionProgress) === 12) {
       WA.chat.sendChatMessage(
-        "congratulations, you've unlocked your third level of your companion. Navigate to the menu on top of your screen, select  'Add companion' and choose your companion",
+        'تهانينا، لقد فتحت المستوى الثالث من رفيقك. انتقل إلى القائمة في أعلى الشاشة، وحدد "إضافة رفيق" واختر رفيقك.',
         "Aida"
       );
       WA.chat.sendChatMessage(
         `
-![Companion Level 1 Unlocked](https://media.cleanshot.cloud/media/94698/hmqGflL1hnnhqcEM6fpWFc91BHeJvJKEAsB42ZZe.jpeg?Expires=1755620926&Signature=mAY5pW3DlY7iQES2vnMQso-xUJK63W1pdd1LHloDr56-r4oplN~eX8Wc9oJuSwcGEKbI~YqxjuMF-EoqXJr7sHJy~Mv1G3RYjJGjUV4YfgjUScEHbBTBfve5L1fLV3pkU0auuCuS0G~FY~S882IdaMbdDHcmx-5cyAI0IaAuGGac4hq7JyNHgCFDYqUxrfv15oTxH2ZVW9VPNJFkGqCaj~IliKyAKUJkVLblGiJxHHNG3YYw-jejG55CCoMKM0cF8fztJQoSI22LmQ6b81w-m~LND9TwIFtSlxKstNPOBdSW~n26cz6zZDSep21CVwUqzcJlzn-7KQBHdTEY7gbaVA__&Key-Pair-Id=K269JMAT9ZF4GZ)
+![Companion Level 1 Unlocked](https://https://komponentab.github.io/Innovation-Diwan-2025/companion-tut.png)
       `,
         "Aida"
       );
@@ -127,26 +154,35 @@ WA.onInit().then(() => {
 WA.onInit().then(() => {
   WA.player.state.onVariableChange("companionProgress").subscribe((value) => {
     if (value === 1) {
-      WA.chat.sendChatMessage("we are refreshing your page", "Aida");
+      WA.chat.sendChatMessage(
+        "تمت ترقية رفيقك، ونحن نقوم بتحديث صفحتك.",
+        "System"
+      );
       setTimeout(() => {
         WA.nav.goToPage(
-          "https://play.workadventu.re/_/6jxklszz2gs/localhost:5173/MBS-City.tmj"
+          "https://play.workadventu.re/@/misk/innovation-diwan-2025/mbs-city"
         );
       }, 6000);
     } else if (value === 6) {
-      WA.chat.sendChatMessage("we are refreshing your page", "Aida");
+      WA.chat.sendChatMessage(
+        "تمت ترقية رفيقك، ونحن نقوم بتحديث صفحتك.",
+        "System"
+      );
       setTimeout(() => {
         WA.nav.goToPage(
-          "https://play.workadventu.re/_/6jxklszz2gs/localhost:5173/MBS-City.tmj"
+          "https://play.workadventu.re/@/misk/innovation-diwan-2025/mbs-city"
         );
-      }, 1000);
+      }, 3000);
     } else if (value === 12) {
-      WA.chat.sendChatMessage("we are refreshing your page", "Aida");
+      WA.chat.sendChatMessage(
+        "تمت ترقية رفيقك، ونحن نقوم بتحديث صفحتك.",
+        "System"
+      );
       setTimeout(() => {
         WA.nav.goToPage(
-          "https://play.workadventu.re/_/6jxklszz2gs/localhost:5173/MBS-City.tmj"
+          "https://play.workadventu.re/@/misk/innovation-diwan-2025/mbs-city"
         );
-      }, 1000);
+      }, 3000);
     }
   });
 });
@@ -282,7 +318,10 @@ WA.onInit().then(() => {
         "Aida"
       );
     } else {
-      WA.chat.sendChatMessage("مرحبًا بكم في رحلة الرفقة في MBS-City، اسمي د. عايدة. أقوم بأبحاث حول الرفقاء وكيفية تطورهم.", "Aida");
+      WA.chat.sendChatMessage(
+        "مرحبًا بكم في رحلة الرفقة في MBS-City، اسمي د. عايدة. أقوم بأبحاث حول الرفقاء وكيفية تطورهم.",
+        "Aida"
+      );
       const triggerMessage = WA.ui.displayActionMessage({
         message: "Press [SPACE] to speak with Dr. Aida.",
         callback: () => {
@@ -339,7 +378,7 @@ function handleQuest2Start() {
     message: "Press [SPACE] to help with diabetic needs.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
-        "../balancedMeal.html",
+        "https://komponentab.github.io/Innovation-Diwan-2025/balancedMeal.html",
         true,
         "",
         70,
@@ -436,7 +475,10 @@ WA.onInit().then(() => {
     const sub = WA.room.onEnterLayer(layer).subscribe({
       next: () => {
         WA.player.state.quest3 = "solved";
-        WA.chat.sendChatMessage("شكراً على العثور على مقصاتي", "Fahd the Barber");
+        WA.chat.sendChatMessage(
+          "شكراً على العثور على مقصاتي",
+          "Fahd the Barber"
+        );
         WA.room.hideLayer(layer);
         incrementCompanionProgress();
 
@@ -456,7 +498,6 @@ WA.onInit().then(() => {
     }
   });
 });
-
 
 WA.onInit().then(() => {
   WA.room.area.onEnter("quest4").subscribe(() => {
@@ -486,7 +527,7 @@ function handleQuest4Start() {
     message: "اضغط على [SPACE] للمساعدة في حل حالات الطوارئ.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
-        "../paramedic.html",
+        "https://komponentab.github.io/Innovation-Diwan-2025/paramedic.html",
         true,
         "",
         70,
@@ -508,9 +549,6 @@ function setupQuest4LeaveHandler(coWebsite: any) {
     },
   });
 }
-
-
-
 
 // Quest 5 logic
 
@@ -535,7 +573,6 @@ WA.onInit().then(() => {
     }
   });
 });
-
 
 WA.onInit().then(() => {
   WA.room.area.onEnter("quest8").subscribe(() => {
@@ -565,7 +602,7 @@ function handleQuest8Start() {
     message: "اضغط على [SPACE] للمساعدة في العثور على الأحذية المطابقة.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
-        "../organizedShelf.html",
+        "https://komponentab.github.io/Innovation-Diwan-2025/organizedShelf.html",
         true,
         "",
         70,
@@ -679,7 +716,6 @@ WA.onInit().then(() => {
   }
 });
 
-
 // Quest 10 Logic
 WA.onInit().then(() => {
   WA.player.state.onVariableChange("quest10").subscribe((newValue) => {
@@ -688,7 +724,6 @@ WA.onInit().then(() => {
     }
   });
 });
-
 
 WA.onInit().then(() => {
   WA.room.area.onEnter("quest10").subscribe(() => {
@@ -718,7 +753,7 @@ function handleQuest10Start() {
     message: "اضغط على [SPACE] للمساعدة في العثور على مكان للانسحاب.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
-        "../guidingLight.html",
+        "https://komponentab.github.io/Innovation-Diwan-2025/guidingLight.html",
         true,
         "",
         70,
@@ -741,8 +776,6 @@ function setupQuest10LeaveHandler(coWebsite: any) {
   });
 }
 
-
-
 // Quest 11 Logic
 WA.onInit().then(() => {
   WA.player.state.onVariableChange("quest11").subscribe((newValue) => {
@@ -751,7 +784,6 @@ WA.onInit().then(() => {
     }
   });
 });
-
 
 WA.onInit().then(() => {
   WA.room.area.onEnter("quest11").subscribe(() => {
@@ -781,7 +813,7 @@ function handleQuest11Start() {
     message: "Press [SPACE] to help with the leaking pipes",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
-        "../waterSaver.html",
+        "https://komponentab.github.io/Innovation-Diwan-2025/waterSaver.html",
         true,
         "",
         70,
@@ -813,7 +845,6 @@ WA.onInit().then(() => {
   });
 });
 
-
 WA.onInit().then(() => {
   WA.room.area.onEnter("quest12").subscribe(() => {
     if (WA.player.state.quest12 === "solved") {
@@ -842,7 +873,7 @@ function handleQuest12Start() {
     message: "اضغط على [SPACE] للمساعدة في العثور على مكان للانسحاب.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
-        "../retreat.html",
+        "https://komponentab.github.io/Innovation-Diwan-2025/retreat.html",
         true,
         "",
         70,
@@ -864,8 +895,6 @@ function setupQuest12LeaveHandler(coWebsite: any) {
     },
   });
 }
-
-
 
 // Quest 13 logic
 WA.onInit().then(() => {
