@@ -53,4 +53,30 @@ WA.onInit().then(() => {
   });
 });
 
+WA.onInit().then(() => {
+  WA.controls.disableInviteButton();
+  if (
+    !["admin", "speaker", "moderator"].some((tag) =>
+      WA.player.tags.includes(tag)
+    )
+  ) {
+    WA.controls.disableMapEditor();
+  }
+  WA.ui.actionBar.addButton({
+    id: "map-btn",
+    label: "خريطة",
+    toolTip: "افتح خريطة مصغرة لمدينة MBS",
+    callback: () => {
+      WA.ui.modal.openModal({
+        title: "Map",
+        src: "https://p.interacty.me/9a16f1bbd0d5fd3c/iframe.html",
+        allow: "",
+        allowApi: true,
+        position: "center",
+        // Removed unsupported 'onClose' property
+      });
+    },
+  });
+});
+
 export {};

@@ -2537,7 +2537,7 @@
         {
          "name":"mapImage",
          "type":"string",
-         "value":"MISK-HQ-map.png"
+         "value":"MISK-HQ-Auditorium.png"
         }, 
         {
          "name":"mapName",
