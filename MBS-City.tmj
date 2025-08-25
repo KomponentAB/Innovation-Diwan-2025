@@ -4726,7 +4726,7 @@
                          "y":0
                         }],
                  "name":"hidefog",
-                 "opacity":1,
+                 "opacity":0.99,
                  "type":"group",
                  "visible":true,
                  "x":0,
