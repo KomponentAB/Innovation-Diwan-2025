@@ -185,9 +185,7 @@ WA.onInit().then(() => {
         "System"
       );
       setTimeout(() => {
-        WA.nav.goToPage(
-          "https://play.workadventu.re/@/misk/innovation-diwan-2025/mbs-city"
-        );
+        WA.nav.goToPage("https://misk.innovation-diwan.com/@/mbs-city");
       }, 6000);
     } else if (value === 6) {
       WA.chat.sendChatMessage(
@@ -195,9 +193,7 @@ WA.onInit().then(() => {
         "System"
       );
       setTimeout(() => {
-        WA.nav.goToPage(
-          "https://play.workadventu.re/@/misk/innovation-diwan-2025/mbs-city"
-        );
+        WA.nav.goToPage("https://misk.innovation-diwan.com/@/mbs-city");
       }, 3000);
     } else if (value === 12) {
       WA.chat.sendChatMessage(
@@ -205,9 +201,7 @@ WA.onInit().then(() => {
         "System"
       );
       setTimeout(() => {
-        WA.nav.goToPage(
-          "https://play.workadventu.re/@/misk/innovation-diwan-2025/mbs-city"
-        );
+        WA.nav.goToPage("https://misk.innovation-diwan.com/@/mbs-city");
       }, 3000);
     }
   });
