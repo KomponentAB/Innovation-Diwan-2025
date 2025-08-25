@@ -319,6 +319,65 @@ const teleports: AreaTeleport[] = [
   },
 ];
 
+const areaLayerMap: Record<string, { show: string; hide: string }> = {
+  toInnovatorRoom: {
+    show: "foreground/hideFog/innovator",
+    hide: "foreground/hideFog/city",
+  },
+  fromInnovatorRoom: {
+    show: "foreground/hideFog/city",
+    hide: "foreground/hideFog/innovator",
+  },
+  toResearchRoom1: {
+    show: "foreground/hideFog/research",
+    hide: "foreground/hideFog/city",
+  },
+  fromResearchRoom1: {
+    show: "foreground/hideFog/city",
+    hide: "foreground/hideFog/research",
+  },
+  toResearchRoom2: {
+    show: "foreground/hideFog/research",
+    hide: "foreground/hideFog/city",
+  },
+  fromResearchRoom2: {
+    show: "foreground/hideFog/city",
+    hide: "foreground/hideFog/research",
+  },
+  toResearchRoom3: {
+    show: "foreground/hideFog/research",
+    hide: "foreground/hideFog/city",
+  },
+  fromResearchRoom3: {
+    show: "foreground/hideFog/city",
+    hide: "foreground/hideFog/research",
+  },
+  toMentorRoom: {
+    show: "foreground/hideFog/mentor",
+    hide: "foreground/hideFog/city",
+  },
+  fromMentorRoom: {
+    show: "foreground/hideFog/city",
+    hide: "foreground/hideFog/mentor",
+  },
+  toPrayerRoom: {
+    show: "foreground/hideFog/prayer",
+    hide: "foreground/hideFog/city",
+  },
+  fromPrayerRoom: {
+    show: "foreground/hideFog/city",
+    hide: "foreground/hideFog/prayer",
+  },
+  toChallengeRoom: {
+    show: "foreground/hideFog/challenge",
+    hide: "foreground/hideFog/city",
+  },
+  fromChallengeRoom: {
+    show: "foreground/hideFog/city",
+    hide: "foreground/hideFog/challenge",
+  },
+};
+
 function pickRandomCoord(
   coords: { x: number; y: number }[]
 ): { x: number; y: number } | undefined {
@@ -331,6 +390,13 @@ WA.onInit().then(() => {
     WA.room.area.onEnter(area).subscribe(() => {
       const coord = pickRandomCoord(coords);
       if (coord) WA.player.teleport(coord.x, coord.y);
+
+      // Handle fog layers
+      const layerAction = areaLayerMap[area];
+      if (layerAction) {
+        WA.room.showLayer(layerAction.show);
+        WA.room.hideLayer(layerAction.hide);
+      }
     });
   });
 });
