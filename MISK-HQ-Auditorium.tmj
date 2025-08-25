@@ -1709,8 +1709,55 @@
          "name":"floorLayer",
          "objects":[
                 {
-                 "height":319.36263260446,
-                 "id":133,
+                 "height":1009.139,
+                 "id":271,
+                 "name":"eventAreaCrowd",
+                 "properties":[
+                        {
+                         "name":"focusable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"jitsiClosable",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"jitsiConfig",
+                         "type":"string",
+                         "value":"{    \"startWithAudioMuted\":true,\n  \"toolbarButtons\": [\n    \"camera\",\n\"chat\",\n    \"raisehand\"\n  ],\n  \"disabledSounds\": [\n    \"E2EE_OFF_SOUND\",\n    \"E2EE_ON_SOUND\",\n    \"PARTICIPANT_JOINED_SOUND\",\n    \"PARTICIPANT_LEFT_SOUND\"\n  ]\n}"
+                        }, 
+                        {
+                         "name":"jitsiInterfaceConfig",
+                         "type":"string",
+                         "value":"{\n\"DEFAULT_BACKGROUND\": \"#00635B\"}"
+                        }, 
+                        {
+                         "name":"jitsiRoom",
+                         "type":"string",
+                         "value":"GreatHall"
+                        }, 
+                        {
+                         "name":"jitsiRoomAdminTag",
+                         "type":"string",
+                         "value":"admin"
+                        }, 
+                        {
+                         "name":"zoom_margin",
+                         "type":"float",
+                         "value":-0.5
+                        }],
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":1526.97,
+                 "x":1110.42197674419,
+                 "y":1047.34074071807
+                }, 
+                {
+                 "height":319.363,
+                 "id":272,
                  "name":"eventAreaStage",
                  "properties":[
                         {
@@ -1731,7 +1778,7 @@
                         {
                          "name":"jitsiInterfaceConfig",
                          "type":"string",
-                         "value":"{\n\"DEFAULT_BACKGROUND\": \"#6e1946\"}"
+                         "value":"{\n\"DEFAULT_BACKGROUND\": \"#00635B\"}"
                         }, 
                         {
                          "name":"jitsiRoom",
@@ -1756,71 +1803,13 @@
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":1257.30431326062,
-                 "x":1177.68466739856,
-                 "y":3038.68415426004
-                }, 
-                {
-                 "height":953.138880572066,
-                 "id":134,
-                 "name":"eventAreaCrowd2",
-                 "properties":[
-                        {
-                         "name":"focusable",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"jitsiClosable",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"jitsiConfig",
-                         "type":"string",
-                         "value":"{    \"startWithAudioMuted\":true,\n  \"toolbarButtons\": [\n    \"camera\",\n\"chat\",\n    \"raisehand\"\n  ],\n  \"disabledSounds\": [\n    \"E2EE_OFF_SOUND\",\n    \"E2EE_ON_SOUND\",\n    \"PARTICIPANT_JOINED_SOUND\",\n    \"PARTICIPANT_LEFT_SOUND\"\n  ]\n}"
-                        }, 
-                        {
-                         "name":"jitsiInterfaceConfig",
-                         "type":"string",
-                         "value":"{\n\"DEFAULT_BACKGROUND\": \"#6e1946\"}"
-                        }, 
-                        {
-                         "name":"jitsiRoom",
-                         "type":"string",
-                         "value":"GreatHall"
-                        }, 
-                        {
-                         "name":"jitsiRoomAdminTag",
-                         "type":"string",
-                         "value":"admin"
-                        }, 
-                        {
-                         "name":"zoom_margin",
-                         "type":"float",
-                         "value":-0.5
-                        }],
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":1250.97413464123,
-                 "x":1188.01431691,
-                 "y":2069.55974348114
-                }, 
-                {
-                 "height":653.099787448592,
-                 "id":135,
-                 "name":"Auditorium",
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":1313.02410971024,
-                 "x":1145.29351913294,
-                 "y":2375.93619090555
+                 "width":609.3,
+                 "x":1291.35,
+                 "y":708.3185
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -2521,7 +2510,7 @@
          "y":0
         }],
  "nextlayerid":182,
- "nextobjectid":271,
+ "nextobjectid":273,
  "orientation":"orthogonal",
  "properties":[
         {
