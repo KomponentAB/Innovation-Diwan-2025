@@ -1729,14 +1729,14 @@
                          "value":"{\n\"DEFAULT_BACKGROUND\": \"#00635B\"}"
                         }, 
                         {
+                         "name":"jitsiRoom",
+                         "type":"string",
+                         "value":"GreatHall"
+                        }, 
+                        {
                          "name":"jitsiRoomAdminTag",
                          "type":"string",
                          "value":"admin"
-                        }, 
-                        {
-                         "name":"jitsiUrl",
-                         "type":"string",
-                         "value":"coremeet.workadventu.re\/fcdpa0-greathall?lang=ar"
                         }],
                  "rotation":0,
                  "type":"area",
