@@ -49,7 +49,7 @@ WA.onInit().then(() => {
     WA.room.showLayer("foreground/roof/roof_0");
     WA.room.showLayer("foreground/roof/roof_1");
     WA.room.showLayer("foreground/roof/roof_2");
-    WA.room.hideLayer("background/floors/glasswall");
+    WA.room.hideLayer("background/glasswall");
   });
 });
 
