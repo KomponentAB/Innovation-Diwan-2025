@@ -4756,7 +4756,7 @@
         {
          "name":"mapImage",
          "type":"string",
-         "value":"MBS-City.jpg"
+         "value":"MBS-City.png"
         }, 
         {
          "name":"mapName",

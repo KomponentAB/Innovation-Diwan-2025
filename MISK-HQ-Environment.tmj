@@ -1761,7 +1761,7 @@
         {
          "name":"mapImage",
          "type":"string",
-         "value":"MISK-HQ-Environment.jpg"
+         "value":"MISK-HQ-Environment.png"
         }, 
         {
          "name":"mapName",
