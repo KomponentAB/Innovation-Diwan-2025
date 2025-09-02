@@ -140,70 +140,22 @@ async function updateMemberTags(level: "lvl1" | "lvl2" | "lvl3") {
 }
 
 WA.onInit().then(() => {
-  if (WA.player.state.companionProgress === 1) {
-    WA.chat.sendChatMessage(
-      'تهانينا، لقد فتحت المستوى الثالث من رفيقك. انتقل إلى القائمة في أعلى الشاشة، وحدد "إضافة رفيق" واختر رفيقك.',
-      "Aida"
-    );
-    WA.chat.sendChatMessage(
-      `
-![Companion Level 1 Unlocked](https://https://komponentab.github.io/Innovation-Diwan-2025/companion-tut.png)
-      `,
-      "Aida"
-    );
-    if (Number(WA.player.state.companionProgress) === 6) {
-      WA.chat.sendChatMessage(
-        'تهانينا، لقد فتحت المستوى الثالث من رفيقك. انتقل إلى القائمة في أعلى الشاشة، وحدد "إضافة رفيق" واختر رفيقك.',
-        "Aida"
-      );
-      WA.chat.sendChatMessage(
-        `
-![Companion Level 1 Unlocked](https://https://komponentab.github.io/Innovation-Diwan-2025/companion-tut.png)
-      `,
-        "Aida"
-      );
-    }
-    if (Number(WA.player.state.companionProgress) === 12) {
-      WA.chat.sendChatMessage(
-        'تهانينا، لقد فتحت المستوى الثالث من رفيقك. انتقل إلى القائمة في أعلى الشاشة، وحدد "إضافة رفيق" واختر رفيقك.',
-        "Aida"
-      );
-      WA.chat.sendChatMessage(
-        `
-![Companion Level 1 Unlocked](https://https://komponentab.github.io/Innovation-Diwan-2025/companion-tut.png)
-      `,
-        "Aida"
-      );
-    }
-  }
-});
-
-WA.onInit().then(() => {
   WA.player.state.onVariableChange("companionProgress").subscribe((value) => {
     if (value === 1) {
       WA.chat.sendChatMessage(
-        "تمت ترقية رفيقك، ونحن نقوم بتحديث صفحتك.",
-        "System"
+        "لقد ارتقى رفيقك إلى مستوى أعلى. يرجى تحديث الصفحة للوصول إلى الرفيق الجديد.",
+        "Aila"
       );
-      setTimeout(() => {
-        WA.nav.goToPage("https://misk.innovation-diwan.com/@/mbs-city");
-      }, 6000);
     } else if (value === 6) {
       WA.chat.sendChatMessage(
-        "تمت ترقية رفيقك، ونحن نقوم بتحديث صفحتك.",
-        "System"
+        "لقد ارتقى رفيقك إلى مستوى أعلى. يرجى تحديث الصفحة للوصول إلى الرفيق الجديد.",
+        "Aila"
       );
-      setTimeout(() => {
-        WA.nav.goToPage("https://misk.innovation-diwan.com/@/mbs-city");
-      }, 3000);
     } else if (value === 12) {
       WA.chat.sendChatMessage(
-        "تمت ترقية رفيقك، ونحن نقوم بتحديث صفحتك.",
-        "System"
+        "لقد ارتقى رفيقك إلى مستوى أعلى. يرجى تحديث الصفحة للوصول إلى الرفيق الجديد.",
+        "Aila"
       );
-      setTimeout(() => {
-        WA.nav.goToPage("https://misk.innovation-diwan.com/@/mbs-city");
-      }, 3000);
     }
   });
 });
@@ -404,26 +356,17 @@ WA.onInit().then(() => {
         "Aida"
       );
     } else {
+      incrementCompanionProgress();
       WA.chat.sendChatMessage(
-        "مرحبًا بكم في رحلة الرفقة في MBS-City، اسمي د. عايدة. أقوم بأبحاث حول الرفقاء وكيفية تطورهم.",
+        "مرحبًا! تبدأ رحلة رفاقك الآن. يمكنك اختيار واحد من أربعة رفاق من القائمة. مع كل استكشاف ومهمة تحلها في MBS-City، يتطور رفيقك. حظًا سعيدًا! آمل أن تتوافق أنت ورفيقك مع بعضكما البعض.",
         "Aida"
       );
-      const triggerMessage = WA.ui.displayActionMessage({
-        message: "Press [SPACE] to speak with Dr. Aida.",
-        callback: () => {
-          incrementCompanionProgress();
-          WA.chat.sendChatMessage(
-            "مرحبًا! تبدأ رحلة رفاقك الآن. يمكنك اختيار واحد من أربعة رفاق من القائمة. مع كل استكشاف ومهمة تحلها في MBS-City، يتطور رفيقك. حظًا سعيدًا! آمل أن تتوافق أنت ورفيقك مع بعضكما البعض.",
-            "Aida"
-          );
-          WA.player.state.quest1 = "solved";
-          triggerMessage.remove();
-        },
-      });
-      WA.room.area.onLeave("quest1").subscribe(() => {
-        WA.chat.close();
-      });
+      WA.player.state.quest1 = "solved";
     }
+  });
+
+  WA.room.area.onLeave("quest1").subscribe(() => {
+    WA.chat.close();
   });
 });
 
@@ -461,7 +404,7 @@ function handleQuest2Start() {
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
-    message: "Press [SPACE] to help with diabetic needs.",
+    message: "اضغط على [مفتاح المسافة] للمساعدة في تلبية احتياجات مرضى السكري.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
         "https://komponentab.github.io/Innovation-Diwan-2025/balancedMeal.html",
@@ -474,6 +417,11 @@ function handleQuest2Start() {
       );
       triggerMessage.remove();
       setupQuest2LeaveHandler(coWebsite);
+    },
+  });
+  WA.room.area.onLeave("quest2").subscribe({
+    next: () => {
+      triggerMessage.remove();
     },
   });
 }
@@ -508,7 +456,7 @@ WA.onInit().then(() => {
           "Fahd the Barber"
         );
         const triggerMessage = WA.ui.displayActionMessage({
-          message: "اضغط على [SPACE] للتحدث إلى باربر.",
+          message: "اضغط على [مفتاح المسافة] للتحدث إلى باربر.",
           callback: () => {
             WA.chat.sendChatMessage(
               "لا بد أنني أضعت مقصّي على طاولة في مكان قريب.",
@@ -610,7 +558,7 @@ function handleQuest4Start() {
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
-    message: "اضغط على [SPACE] للمساعدة في حل حالات الطوارئ.",
+    message: "اضغط على [مفتاح المسافة] للمساعدة في حل حالات الطوارئ.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
         "https://komponentab.github.io/Innovation-Diwan-2025/paramedic.html",
@@ -623,6 +571,11 @@ function handleQuest4Start() {
       );
       triggerMessage.remove();
       setupQuest4LeaveHandler(coWebsite);
+    },
+  });
+  WA.room.area.onLeave("quest4").subscribe({
+    next: () => {
+      triggerMessage.remove();
     },
   });
 }
@@ -685,7 +638,8 @@ function handleQuest8Start() {
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
-    message: "اضغط على [SPACE] للمساعدة في العثور على الأحذية المطابقة.",
+    message:
+      "اضغط على [مفتاح المسافة] للمساعدة في العثور على الأحذية المطابقة.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
         "https://komponentab.github.io/Innovation-Diwan-2025/organizedShelf.html",
@@ -698,6 +652,11 @@ function handleQuest8Start() {
       );
       triggerMessage.remove();
       setupQuest8LeaveHandler(coWebsite);
+    },
+  });
+  WA.room.area.onLeave("quest8").subscribe({
+    next: () => {
+      triggerMessage.remove();
     },
   });
 }
@@ -836,7 +795,7 @@ function handleQuest10Start() {
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
-    message: "اضغط على [SPACE] للمساعدة في العثور على مكان للانسحاب.",
+    message: "اضغط على [مفتاح المسافة] للمساعدة في العثور على مكان للانسحاب.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
         "https://komponentab.github.io/Innovation-Diwan-2025/guidingLight.html",
@@ -849,6 +808,11 @@ function handleQuest10Start() {
       );
       triggerMessage.remove();
       setupQuest10LeaveHandler(coWebsite);
+    },
+  });
+  WA.room.area.onLeave("quest10").subscribe({
+    next: () => {
+      triggerMessage.remove();
     },
   });
 }
@@ -896,7 +860,7 @@ function handleQuest11Start() {
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
-    message: "Press [SPACE] to help with the leaking pipes",
+    message: "اضغط على [مفتاح المسافة] للمساعدة في إصلاح الأنابيب المتسربة",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
         "https://komponentab.github.io/Innovation-Diwan-2025/waterSaver.html",
@@ -909,6 +873,11 @@ function handleQuest11Start() {
       );
       triggerMessage.remove();
       setupQuest11LeaveHandler(coWebsite);
+    },
+  });
+  WA.room.area.onLeave("quest11").subscribe({
+    next: () => {
+      triggerMessage.remove();
     },
   });
 }
@@ -956,7 +925,7 @@ function handleQuest12Start() {
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
-    message: "اضغط على [SPACE] للمساعدة في العثور على مكان للانسحاب.",
+    message: "اضغط على [مفتاح المسافة] للمساعدة في العثور على مكان للانسحاب.",
     callback: async () => {
       const coWebsite = await WA.nav.openCoWebSite(
         "https://komponentab.github.io/Innovation-Diwan-2025/retreat.html",
@@ -969,6 +938,11 @@ function handleQuest12Start() {
       );
       triggerMessage.remove();
       setupQuest12LeaveHandler(coWebsite);
+    },
+  });
+  WA.room.area.onLeave("quest12").subscribe({
+    next: () => {
+      triggerMessage.remove();
     },
   });
 }
