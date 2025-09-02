@@ -1736,7 +1736,7 @@
                         {
                          "name":"jitsiUrl",
                          "type":"string",
-                         "value":"https:\/\/coremeet.workadventu.re\/fcdpa0-greathall?lang=ar"
+                         "value":"coremeet.workadventu.re\/fcdpa0-greathall?lang=ar"
                         }],
                  "rotation":0,
                  "type":"area",
