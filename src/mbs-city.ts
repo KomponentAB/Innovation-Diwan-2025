@@ -602,6 +602,10 @@ WA.onInit().then(() => {
       incrementCompanionProgress();
     }
   });
+
+  WA.room.area.onLeave("quest5").subscribe(() => {
+    WA.chat.close();
+  });
 });
 
 // Quest 8 Logic
@@ -967,6 +971,9 @@ WA.onInit().then(() => {
       WA.player.state.quest13 = "solved";
       incrementCompanionProgress();
     }
+  });
+  WA.room.area.onLeave("quest13").subscribe(() => {
+    WA.chat.close();
   });
 });
 
