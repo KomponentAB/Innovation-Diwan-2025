@@ -61,6 +61,7 @@ WA.onInit().then(() => {
     )
   ) {
     WA.controls.disableMapEditor();
+    WA.controls.disableRoomList();
   }
   WA.ui.actionBar.addButton({
     id: "map-btn",
