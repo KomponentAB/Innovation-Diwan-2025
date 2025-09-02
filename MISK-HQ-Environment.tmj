@@ -1761,7 +1761,7 @@
         {
          "name":"mapImage",
          "type":"string",
-         "value":"MISK-HQ-Environment.png"
+         "value":"MISK-HQ-Environment.jpg"
         }, 
         {
          "name":"mapName",
@@ -1771,7 +1771,7 @@
         {
          "name":"script",
          "type":"string",
-         "value":"src\/misk-hq.ts"
+         "value":"src\/misk-hq-env.ts"
         }],
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

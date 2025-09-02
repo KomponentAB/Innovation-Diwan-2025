@@ -1651,7 +1651,7 @@
         {
          "name":"mapImage",
          "type":"string",
-         "value":"MISK-HQ-Economy.png"
+         "value":"MISK-HQ-Economy.jpg"
         }, 
         {
          "name":"mapName",

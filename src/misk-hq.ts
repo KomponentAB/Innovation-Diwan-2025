@@ -64,12 +64,12 @@ WA.onInit().then(() => {
   }
   WA.ui.actionBar.addButton({
     id: "map-btn",
-    label: "خريطة",
-    toolTip: "افتح خريطة مصغرة لمدينة MBS",
+    label: "map/خريطة",
+    toolTip: "فتح خريطة مصغرة",
     callback: () => {
       WA.ui.modal.openModal({
         title: "Map",
-        src: "https://p.interacty.me/9a16f1bbd0d5fd3c/iframe.html",
+        src: "https://p.interacty.me/13c27cff3653f1fd/iframe.html",
         allow: "",
         allowApi: true,
         position: "center",
