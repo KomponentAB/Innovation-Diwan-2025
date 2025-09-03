@@ -53,7 +53,7 @@ WA.onInit().then(() => {
     callback: () => {
       WA.ui.modal.openModal({
         title: "Map",
-        src: "https://p.interacty.me/55581cf1cfed663b/iframe.html",
+        src: "https://p.interacty.me/1680ee9453ff480c/iframe.html",
         allow: "",
         allowApi: true,
         position: "center",
