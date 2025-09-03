@@ -353,13 +353,13 @@ WA.onInit().then(() => {
     if (WA.player.state["quest1"] === "solved") {
       WA.chat.sendChatMessage(
         "رحلتك قد بدأت. آمل أن تتوافق أنت ورفيقك مع بعضكما البعض.",
-        "Aida"
+        "عايدة"
       );
     } else {
       incrementCompanionProgress();
       WA.chat.sendChatMessage(
         "مرحبًا! تبدأ رحلة رفاقك الآن. يمكنك اختيار واحد من أربعة رفاق من القائمة. مع كل استكشاف ومهمة تحلها في MBS-City، يتطور رفيقك. حظًا سعيدًا! آمل أن تتوافق أنت ورفيقك مع بعضكما البعض.",
-        "Aida"
+        "عايدة"
       );
       WA.player.state.quest1 = "solved";
     }
@@ -392,7 +392,7 @@ WA.onInit().then(() => {
 function handleQuest2Solved() {
   WA.chat.sendChatMessage(
     "شكراً لمساعدتك في تلبية احتياجات مرضى السكري في وقت سابق!",
-    "Amal the Nutritionist "
+    "أخصائية التغذية أمل"
   );
 }
 
@@ -400,7 +400,7 @@ function handleQuest2Start() {
   const playerName: string = WA.player.name || "Player";
   WA.chat.sendChatMessage(
     `مرحباً، ${playerName}! هل يمكنك مساعدتي من فضلك؟`,
-    "Amal the Nutritionist "
+    "أخصائية التغذية أمل"
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
@@ -443,24 +443,24 @@ WA.onInit().then(() => {
       if (WA.player.state["quest3"] === "solved") {
         WA.chat.sendChatMessage(
           `شكراً على مساعدتك ${playerName}!`,
-          "Fahd the Barber"
+          "الحلاق فهد"
         );
       } else if (WA.player.state["quest3"] === "started") {
         WA.chat.sendChatMessage(
           "لا بد أنني أضعت مقصّي على طاولة في مكان قريب.",
-          "Fahd the Barber"
+          "الحلاق فهد"
         );
       } else {
         WA.chat.sendChatMessage(
           `مرحباً، ${playerName}! هل يمكنك مساعدتي من فضلك؟`,
-          "Fahd the Barber"
+          "الحلاق فهد"
         );
         const triggerMessage = WA.ui.displayActionMessage({
           message: "اضغط على [مفتاح المسافة] للتحدث إلى باربر.",
           callback: () => {
             WA.chat.sendChatMessage(
               "لا بد أنني أضعت مقصّي على طاولة في مكان قريب.",
-              "Fahd the Barber"
+              "الحلاق فهد"
             );
             WA.player.state.quest3 = "started";
             WA.room.showLayer("background/furnitures/scissor");
@@ -469,7 +469,7 @@ WA.onInit().then(() => {
                 WA.player.state.quest3 = "solved";
                 WA.chat.sendChatMessage(
                   "شكراً على العثور على مقصاتي",
-                  "Fahd the Barber"
+                  "الحلاق فهد"
                 );
                 WA.room.hideLayer("background/furnitures/scissor");
                 incrementCompanionProgress();
@@ -509,10 +509,7 @@ WA.onInit().then(() => {
     const sub = WA.room.onEnterLayer(layer).subscribe({
       next: () => {
         WA.player.state.quest3 = "solved";
-        WA.chat.sendChatMessage(
-          "شكراً على العثور على مقصاتي",
-          "Fahd the Barber"
-        );
+        WA.chat.sendChatMessage("شكراً على العثور على مقصاتي", "الحلاق فهد");
         WA.room.hideLayer(layer);
         incrementCompanionProgress();
 
@@ -596,7 +593,7 @@ WA.onInit().then(() => {
     if (WA.player.state["quest5"] !== "solved") {
       WA.chat.sendChatMessage(
         "مرحبًا بك في غرفة البحث! هنا يمكنك استكشاف الأفكار الجديدة.",
-        "Aida"
+        "عايدة"
       );
       WA.player.state.quest5 = "solved";
       incrementCompanionProgress();
@@ -630,7 +627,7 @@ WA.onInit().then(() => {
 function handleQuest8Solved() {
   WA.chat.sendChatMessage(
     "شكراً لمساعدتك في اختيار الأحذية سابقاً!",
-    "Rami the Pilgrim"
+    "الحاج رامي"
   );
 }
 
@@ -638,7 +635,7 @@ function handleQuest8Start() {
   const playerName: string = WA.player.name || "Player";
   WA.chat.sendChatMessage(
     `مرحباً، ${playerName}! هل يمكنك مساعدتي من فضلك؟`,
-    "Rami the Pilgrim"
+    "الحاج رامي"
   );
 
   const triggerMessage = WA.ui.displayActionMessage({
@@ -744,14 +741,14 @@ WA.onInit().then(() => {
             if (collectedCount === trashTiles.length) {
               WA.chat.sendChatMessage(
                 "رائع! لقد جمعت كل القمامة! لقد حصلت على نقاط خبرة.",
-                "Aida"
+                "عايدة"
               );
               console.log("Level up placeholder: All trash collected!");
               incrementCompanionProgress();
             } else {
               WA.chat.sendChatMessage(
                 `لقد التقطت بعض القمامة! (${collectedCount} من 4)`,
-                "Aida"
+                "عايدة"
               );
             }
           }
@@ -966,7 +963,7 @@ WA.onInit().then(() => {
     if (WA.player.state["quest13"] !== "solved") {
       WA.chat.sendChatMessage(
         "مرحبًا بك في غرفة البحث! هنا يمكنك استكشاف الأفكار الجديدة.",
-        "Aida"
+        "عايدة"
       );
       WA.player.state.quest13 = "solved";
       incrementCompanionProgress();
