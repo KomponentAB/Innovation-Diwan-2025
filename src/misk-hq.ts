@@ -63,6 +63,7 @@ function setPlayerNameOutline() {
 WA.onInit().then(() => {
   setPlayerNameOutline();
 });
+
 WA.onInit().then(() => {
   WA.room.onLeaveLayer("hideRoof").subscribe(() => {
     console.log("Hiding roof layers");

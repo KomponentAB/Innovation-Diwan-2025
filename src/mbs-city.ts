@@ -19,6 +19,7 @@ WA.onInit()
       .catch((e) => console.error(e));
   })
   .catch((e) => console.error(e));
+
 function setPlayerNameOutline() {
   const roleColors: Record<string, { r: number; g: number; b: number }> = {
     staff: { r: 202, g: 177, b: 245 }, // Prioritize staff

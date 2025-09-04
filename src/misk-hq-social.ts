@@ -63,6 +63,7 @@ function setPlayerNameOutline() {
 WA.onInit().then(() => {
   setPlayerNameOutline();
 });
+
 WA.onInit().then(() => {
   WA.controls.disableInviteButton();
   if (
