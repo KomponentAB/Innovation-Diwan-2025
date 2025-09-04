@@ -36,6 +36,30 @@ function closePopup() {
   }
 }
 
+function setPlayerNameOutline() {
+  const roleColors: Record<string, { r: number; g: number; b: number }> = {
+    health: { r: 210, g: 221, b: 90 },
+    social: { r: 125, g: 206, b: 187 },
+    environment: { r: 114, g: 152, b: 140 },
+    expert: { r: 218, g: 183, b: 160 },
+    staff: { r: 202, g: 177, b: 245 },
+  };
+
+  const outlineColor = WA.player.tags
+    .map((tag) =>
+      Object.entries(roleColors).find(([keyword]) => tag.includes(keyword))
+    )
+    .find(Boolean)?.[1];
+
+  if (outlineColor) {
+    WA.player.setOutlineColor(outlineColor.r, outlineColor.g, outlineColor.b);
+  }
+}
+
+WA.onInit().then(() => {
+  setPlayerNameOutline();
+});
+
 WA.onInit().then(() => {
   WA.controls.disableInviteButton();
   if (
