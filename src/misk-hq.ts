@@ -41,7 +41,7 @@ WA.onInit().then(() => {
     WA.room.hideLayer("foreground/roof/roof_0");
     WA.room.hideLayer("foreground/roof/roof_1");
     WA.room.hideLayer("foreground/roof/roof_2");
-    WA.room.showLayer("background/floors/glasswall");
+    WA.room.showLayer("background/glasswall");
   });
 
   WA.room.onEnterLayer("hideRoof").subscribe(() => {
@@ -56,7 +56,7 @@ WA.onInit().then(() => {
 WA.onInit().then(() => {
   WA.controls.disableInviteButton();
   if (
-    !["admin", "speaker", "moderator"].some((tag) =>
+    !["admin", "speaker", "moderator", "staff"].some((tag) =>
       WA.player.tags.includes(tag)
     )
   ) {
