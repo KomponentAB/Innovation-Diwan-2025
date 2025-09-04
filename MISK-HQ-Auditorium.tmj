@@ -1721,7 +1721,7 @@
                         {
                          "name":"jitsiConfig",
                          "type":"string",
-                         "value":"{    \"startWithAudioMuted\":true,\n  \"toolbarButtons\": [\n    \"camera\",\n\"chat\",\n    \"raisehand\"\n  ],\n  \"disabledSounds\": [\n    \"E2EE_OFF_SOUND\",\n    \"E2EE_ON_SOUND\",\n    \"PARTICIPANT_JOINED_SOUND\",\n    \"PARTICIPANT_LEFT_SOUND\"\n  ]\n}"
+                         "value":"{    \"startWithAudioMuted\":true,\n  \"toolbarButtons\": [\n    \"camera\",\n\"microphone\",\n\"chat\",\n    \"raisehand\"\n  ],\n  \"disabledSounds\": [\n    \"E2EE_OFF_SOUND\",\n    \"E2EE_ON_SOUND\",\n    \"PARTICIPANT_JOINED_SOUND\",\n    \"PARTICIPANT_LEFT_SOUND\"\n  ]\n}"
                         }, 
                         {
                          "name":"jitsiInterfaceConfig",
@@ -1736,7 +1736,7 @@
                         {
                          "name":"jitsiRoomAdminTag",
                          "type":"string",
-                         "value":"admin"
+                         "value":"staff"
                         }],
                  "rotation":0,
                  "type":"area",
@@ -1768,7 +1768,7 @@
                         {
                          "name":"jitsiInterfaceConfig",
                          "type":"string",
-                         "value":"{\n\"DEFAULT_BACKGROUND\": \"#00635B\"}"
+                         "value":"{\n\"DEFAULT_BACKGROUND\": \"#cab1f5\"}"
                         }, 
                         {
                          "name":"jitsiRoom",
@@ -1778,7 +1778,7 @@
                         {
                          "name":"jitsiRoomAdminTag",
                          "type":"string",
-                         "value":"admin"
+                         "value":"staff"
                         }, 
                         {
                          "name":"jitsiWidth",
