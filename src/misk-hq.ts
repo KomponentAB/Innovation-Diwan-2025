@@ -38,17 +38,21 @@ function closePopup() {
 
 function setPlayerNameOutline() {
   const roleColors: Record<string, { r: number; g: number; b: number }> = {
+    staff: { r: 202, g: 177, b: 245 }, // Prioritize staff
     health: { r: 210, g: 221, b: 90 },
     social: { r: 125, g: 206, b: 187 },
     environment: { r: 114, g: 152, b: 140 },
     expert: { r: 218, g: 183, b: 160 },
-    staff: { r: 202, g: 177, b: 245 },
   };
 
   const outlineColor = WA.player.tags
     .map((tag) =>
       Object.entries(roleColors).find(([keyword]) => tag.includes(keyword))
     )
+    .filter(
+      (entry): entry is [string, { r: number; g: number; b: number }] => !!entry
+    )
+    .sort(([a], [b]) => (a === "staff" ? -1 : b === "staff" ? 1 : 0)) // Prioritize staff
     .find(Boolean)?.[1];
 
   if (outlineColor) {
@@ -59,7 +63,6 @@ function setPlayerNameOutline() {
 WA.onInit().then(() => {
   setPlayerNameOutline();
 });
-
 WA.onInit().then(() => {
   WA.room.onLeaveLayer("hideRoof").subscribe(() => {
     console.log("Hiding roof layers");
