@@ -51,7 +51,7 @@ WA.onInit().then(() => {
 WA.onInit().then(() => {
   WA.controls.disableInviteButton();
   if (
-    !["admin", "speaker", "moderator"].some((tag) =>
+    !["admin", "speaker", "moderator", "staff"].some((tag) =>
       WA.player.tags.includes(tag)
     )
   ) {
