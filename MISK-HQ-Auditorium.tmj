@@ -1809,7 +1809,7 @@
                         }],
                  "rotation":0,
                  "type":"website",
-                 "visible":true,
+                 "visible":false,
                  "width":216.85,
                  "x":1347.24934991044,
                  "y":764.299886935598
@@ -1826,7 +1826,7 @@
                         }],
                  "rotation":0,
                  "type":"website",
-                 "visible":true,
+                 "visible":false,
                  "width":133.5,
                  "x":1682.63169826876,
                  "y":878.556704148558
