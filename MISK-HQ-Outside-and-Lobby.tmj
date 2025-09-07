@@ -1383,7 +1383,7 @@
                         {
                          "name":"url",
                          "type":"string",
-                         "value":"\/Logos-03.svg"
+                         "value":".\/Logos-03.svg"
                         }],
                  "rotation":0,
                  "type":"website",
@@ -1400,7 +1400,7 @@
                         {
                          "name":"url",
                          "type":"string",
-                         "value":"\/Logos-02.svg"
+                         "value":".\/Logos-02.svg"
                         }],
                  "rotation":0,
                  "type":"website",
