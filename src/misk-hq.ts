@@ -41,7 +41,7 @@ function setPlayerNameOutline() {
     staff: { r: 202, g: 177, b: 245 }, // Prioritize staff
     health: { r: 210, g: 221, b: 90 },
     social: { r: 125, g: 206, b: 187 },
-    environment: { r: 114, g: 152, b: 140 },
+    env: { r: 114, g: 152, b: 140 },
     expert: { r: 218, g: 183, b: 160 },
   };
 
@@ -84,11 +84,7 @@ WA.onInit().then(() => {
 
 WA.onInit().then(() => {
   WA.controls.disableInviteButton();
-  if (
-    !["admin", "speaker", "moderator", "staff"].some((tag) =>
-      WA.player.tags.includes(tag)
-    )
-  ) {
+  if (!["editor"].some((tag) => WA.player.tags.includes(tag))) {
     WA.controls.disableMapEditor();
     WA.controls.disableRoomList();
   }

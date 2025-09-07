@@ -1796,40 +1796,6 @@
                  "width":609.3,
                  "x":1291.35,
                  "y":708.3185
-                }, 
-                {
-                 "height":122.3,
-                 "id":273,
-                 "name":"3 logo",
-                 "properties":[
-                        {
-                         "name":"url",
-                         "type":"string",
-                         "value":"\/Logos-03.svg"
-                        }],
-                 "rotation":0,
-                 "type":"website",
-                 "visible":false,
-                 "width":216.85,
-                 "x":1347.24934991044,
-                 "y":764.299886935598
-                }, 
-                {
-                 "height":75.5,
-                 "id":274,
-                 "name":"2 logo",
-                 "properties":[
-                        {
-                         "name":"url",
-                         "type":"string",
-                         "value":"\/Logos-02.svg"
-                        }],
-                 "rotation":0,
-                 "type":"website",
-                 "visible":false,
-                 "width":133.5,
-                 "x":1682.63169826876,
-                 "y":878.556704148558
                 }],
          "opacity":1,
          "type":"objectgroup",

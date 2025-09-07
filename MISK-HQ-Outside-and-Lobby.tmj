@@ -1374,41 +1374,7 @@
          "draworder":"topdown",
          "id":11,
          "name":"floorLayer",
-         "objects":[
-                {
-                 "height":122.5,
-                 "id":273,
-                 "name":"3 logo",
-                 "properties":[
-                        {
-                         "name":"url",
-                         "type":"string",
-                         "value":".\/Logos-03.svg"
-                        }],
-                 "rotation":0,
-                 "type":"website",
-                 "visible":false,
-                 "width":217,
-                 "x":994.299227799228,
-                 "y":1048.78861003861
-                }, 
-                {
-                 "height":75.5,
-                 "id":274,
-                 "name":"2 logo",
-                 "properties":[
-                        {
-                         "name":"url",
-                         "type":"string",
-                         "value":".\/Logos-02.svg"
-                        }],
-                 "rotation":0,
-                 "type":"website",
-                 "visible":false,
-                 "width":133.5,
-                 "x":1356.99517374517,
-                 "y":1200.18436293436
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
