@@ -83,106 +83,108 @@ async function incrementCompanionProgress() {
     console.error("Error incrementing companion progress:", error);
   }
 }
-let companionProgress = 0; // Initialize companionProgress
-
-// Watch for changes to companionProgress using WA.player.onVariableChange
-WA.player.state
-  .onVariableChange("companionProgress")
-  .subscribe(async (value) => {
-    companionProgress = value as number;
-
-    try {
-      if (companionProgress === 1) {
-        await updateMemberTags("lvl1");
-      } else if (companionProgress === 6) {
-        await updateMemberTags("lvl2");
-      } else if (companionProgress === 12) {
-        await updateMemberTags("lvl3");
-      }
-    } catch (err) {
-      console.error("Error updating member:", err);
-    }
-  });
-
-const API_BASE =
-  "https://admin.workadventu.re/api/v1/worlds/innovation-diwan-2025";
-const MEMBER_ID = "91169e8f-4a26-447d-9243-a6c7af30fffb";
-const API_TOKEN =
-  "7d26150312868440fc230d8abc3964b95521aed5e61809e53f53c385ac6b545c";
-
-// Function to update tags
-async function updateMemberTags(level: "lvl1" | "lvl2" | "lvl3") {
-  const url = `${API_BASE}/members/${MEMBER_ID}`;
-
-  // Fetch existing tags
-  const getResponse = await fetch(url, {
-    method: "GET",
-    headers: {
-      Authorization: API_TOKEN, // no Bearer prefix
-      Accept: "application/json",
-    },
-  });
-
-  if (!getResponse.ok) {
-    const errorText = await getResponse.text();
-    throw new Error(
-      `GET request failed: ${getResponse.status} ${getResponse.statusText}\n${errorText}`
-    );
-  }
-
-  const memberData = await getResponse.json();
-  const existingTags: string[] = memberData.tags || [];
-
-  // Filter out "lvl1", "lvl2", "lvl3" from existing tags
-  const filteredTags = existingTags.filter(
-    (tag) => !["lvl1", "lvl2", "lvl3"].includes(tag)
-  );
-
-  // Add the new level tag
-  const updatedTags = [...filteredTags, level];
-
-  // Update tags with PATCH
-  const patchResponse = await fetch(url, {
-    method: "PATCH",
-    headers: {
-      Authorization: API_TOKEN, // no Bearer prefix
-      Accept: "application/json",
-      "Content-Type": "application/merge-patch+json",
-    },
-    body: JSON.stringify({ tags: updatedTags }),
-  });
-
-  if (!patchResponse.ok) {
-    const errorText = await patchResponse.text();
-    throw new Error(
-      `PATCH request failed: ${patchResponse.status} ${patchResponse.statusText}\n${errorText}`
-    );
-  }
-
-  const patchedData = await patchResponse.json();
-  console.log("Updated member:", patchedData);
-}
-
+let companionProgress: number = Number(WA.player.state.companionProgress) || 0;
 WA.onInit().then(() => {
-  WA.player.state.onVariableChange("companionProgress").subscribe((value) => {
-    if (value === 1) {
-      WA.chat.sendChatMessage(
-        "لقد ارتقى رفيقك إلى مستوى أعلى. يرجى تحديث الصفحة للوصول إلى الرفيق الجديد.",
-        "Aila"
-      );
-    } else if (value === 6) {
-      WA.chat.sendChatMessage(
-        "لقد ارتقى رفيقك إلى مستوى أعلى. يرجى تحديث الصفحة للوصول إلى الرفيق الجديد.",
-        "Aila"
-      );
-    } else if (value === 12) {
-      WA.chat.sendChatMessage(
-        "لقد ارتقى رفيقك إلى مستوى أعلى. يرجى تحديث الصفحة للوصول إلى الرفيق الجديد.",
-        "Aila"
+  // Watch for changes to companionProgress using WA.player.onVariableChange
+  WA.player.state
+    .onVariableChange("companionProgress")
+    .subscribe(async (value) => {
+      companionProgress = value as number;
+
+      try {
+        if (companionProgress === 1) {
+          await updateMemberTags("lvl1");
+        } else if (companionProgress === 6) {
+          await updateMemberTags("lvl2");
+        } else if (companionProgress === 12) {
+          await updateMemberTags("lvl3");
+        }
+      } catch (err) {
+        console.error("Error updating member:", err);
+      }
+    });
+
+  const API_BASE =
+    "https://admin.workadventu.re/api/v1/worlds/innovation-diwan-2025";
+  const MEMBER_ID = "91169e8f-4a26-447d-9243-a6c7af30fffb";
+  const API_TOKEN =
+    "7d26150312868440fc230d8abc3964b95521aed5e61809e53f53c385ac6b545c";
+
+  // Function to update tags
+  async function updateMemberTags(level: "lvl1" | "lvl2" | "lvl3") {
+    const url = `${API_BASE}/members/${MEMBER_ID}`;
+
+    // Fetch existing tags
+    const getResponse = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: API_TOKEN, // no Bearer prefix
+        Accept: "application/json",
+      },
+    });
+
+    if (!getResponse.ok) {
+      const errorText = await getResponse.text();
+      throw new Error(
+        `GET request failed: ${getResponse.status} ${getResponse.statusText}\n${errorText}`
       );
     }
+
+    const memberData = await getResponse.json();
+    const existingTags: string[] = memberData.tags || [];
+
+    // Filter out "lvl1", "lvl2", "lvl3" from existing tags
+    const filteredTags = existingTags.filter(
+      (tag) => !["lvl1", "lvl2", "lvl3"].includes(tag)
+    );
+
+    // Add the new level tag
+    const updatedTags = [...filteredTags, level];
+
+    // Update tags with PATCH
+    const patchResponse = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        Authorization: API_TOKEN, // no Bearer prefix
+        Accept: "application/json",
+        "Content-Type": "application/merge-patch+json",
+      },
+      body: JSON.stringify({ tags: updatedTags }),
+    });
+
+    if (!patchResponse.ok) {
+      const errorText = await patchResponse.text();
+      throw new Error(
+        `PATCH request failed: ${patchResponse.status} ${patchResponse.statusText}\n${errorText}`
+      );
+    }
+
+    const patchedData = await patchResponse.json();
+    console.log("Updated member:", patchedData);
+  }
+
+  WA.onInit().then(() => {
+    WA.player.state.onVariableChange("companionProgress").subscribe((value) => {
+      if (value === 1) {
+        WA.chat.sendChatMessage(
+          "لقد ارتقى رفيقك إلى مستوى أعلى. يرجى تحديث الصفحة للوصول إلى الرفيق الجديد.",
+          "Aila"
+        );
+      } else if (value === 6) {
+        WA.chat.sendChatMessage(
+          "لقد ارتقى رفيقك إلى مستوى أعلى. يرجى تحديث الصفحة للوصول إلى الرفيق الجديد.",
+          "Aila"
+        );
+      } else if (value === 12) {
+        WA.chat.sendChatMessage(
+          "لقد ارتقى رفيقك إلى مستوى أعلى. يرجى تحديث الصفحة للوصول إلى الرفيق الجديد.",
+          "Aila"
+        );
+      }
+    });
   });
 });
+
 WA.onInit().then(() => {
   type AreaTeleport = {
     area: string;
