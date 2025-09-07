@@ -106,7 +106,7 @@ WA.onInit().then(() => {
 
   const API_BASE =
     "https://admin.workadventu.re/api/v1/worlds/innovation-diwan-2025";
-  const MEMBER_ID = "91169e8f-4a26-447d-9243-a6c7af30fffb";
+  const MEMBER_ID = WA.player.id;
   const API_TOKEN =
     "7d26150312868440fc230d8abc3964b95521aed5e61809e53f53c385ac6b545c";
 
