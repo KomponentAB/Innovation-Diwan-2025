@@ -573,7 +573,7 @@ function handleQuest4Solved() {
 function handleQuest4Start() {
   const playerName: string = WA.player.name || "Player";
   WA.chat.sendChatMessage(
-    `Hello, ${playerName}! Can you help me please?`,
+    `مرحباً، ${playerName}! هل يمكنك مساعدتي من فضلك؟`,
     "ياسر المسعف"
   );
 
