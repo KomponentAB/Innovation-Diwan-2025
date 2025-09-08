@@ -2447,7 +2447,7 @@
         {
          "name":"script",
          "type":"string",
-         "value":"src\/misk-hq.ts"
+         "value":"src\/lobby.ts"
         }],
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
