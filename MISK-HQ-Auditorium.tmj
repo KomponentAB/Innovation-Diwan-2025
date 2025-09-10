@@ -1388,7 +1388,7 @@
                         {
                          "name":"jitsiConfig",
                          "type":"string",
-                         "value":"{\n  \"startWithAudioMuted\": true,\n  \"disableTileView\": true,\n  \"toolbarButtons\": [\"camera\", \"microphone\", \"chat\", \"raisehand\", \"customLink\"],\n\n  \"CUSTOM_LINK\": {\n    \"label\": \"Help\",\n    \"icon\": \"link-icon\", \n    \"link\": \"https:\/\/yourcompany.com\/help\" \n  },\n  \"disabledSounds\": [\n    \"INCOMING_MSG_SOUND\",\n    \"REACTION_SOUND\",\n    \"RAISE_HAND_SOUND\",\n    \"E2EE_OFF_SOUND\",\n    \"E2EE_ON_SOUND\",\n    \"PARTICIPANT_JOINED_SOUND\",\n    \"PARTICIPANT_LEFT_SOUND\"\n  ]\n}\n"
+                         "value":"{\n  \"startWithAudioMuted\": true,\n  \"disableTileView\": true,\n  \"toolbarButtons\": [\"camera\", \"chat\", \"raisehand\"],\n  },\n  \"disabledSounds\": [\n    \"INCOMING_MSG_SOUND\",\n    \"REACTION_SOUND\",\n    \"RAISE_HAND_SOUND\",\n    \"E2EE_OFF_SOUND\",\n    \"E2EE_ON_SOUND\",\n    \"PARTICIPANT_JOINED_SOUND\",\n    \"PARTICIPANT_LEFT_SOUND\"\n  ]\n}\n"
                         }, 
                         {
                          "name":"jitsiInterfaceConfig",
