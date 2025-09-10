@@ -1388,7 +1388,7 @@
                         {
                          "name":"jitsiConfig",
                          "type":"string",
-                         "value":"{\n  \"startWithAudioMuted\": true,\n  \"disableTileView\": true,\n  \"toolbarButtons\": [\"camera\", \"chat\", \"raisehand\"],\n  },\n  \"disabledSounds\": [\n    \"INCOMING_MSG_SOUND\",\n    \"REACTION_SOUND\",\n    \"RAISE_HAND_SOUND\",\n    \"E2EE_OFF_SOUND\",\n    \"E2EE_ON_SOUND\",\n    \"PARTICIPANT_JOINED_SOUND\",\n    \"PARTICIPANT_LEFT_SOUND\"\n  ]\n}\n"
+                         "value":"{\n  \"disableTileView\": true,\n  \"startWithAudioMuted\": false,\n  \"toolbarButtons\": [\"camera\", \"chat\", \"raisehand\"],\n  \"disabledSounds\": [\n    \"INCOMING_MSG_SOUND\",\n    \"REACTION_SOUND\",\n    \"RAISE_HAND_SOUND\",\n    \"E2EE_OFF_SOUND\",\n    \"E2EE_ON_SOUND\",\n    \"PARTICIPANT_JOINED_SOUND\",\n    \"PARTICIPANT_LEFT_SOUND\"\n  ]\n}\n"
                         }, 
                         {
                          "name":"jitsiInterfaceConfig",
@@ -1409,11 +1409,6 @@
                          "name":"jitsiRoomAdminTag",
                          "type":"string",
                          "value":"staff"
-                        }, 
-                        {
-                         "name":"jitsiUrl",
-                         "type":"string",
-                         "value":"coremeet.workadventu.re\/2tv1ro-greathall"
                         }],
                  "rotation":0,
                  "type":"area",
@@ -1448,9 +1443,14 @@
                          "value":"{\n\"DEFAULT_BACKGROUND\": \"#cab1f5\"}"
                         }, 
                         {
+                         "name":"jitsiNoPrefix",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"jitsiRoom",
                          "type":"string",
-                         "value":"GreatHall"
+                         "value":"2tv1ro-greathall"
                         }, 
                         {
                          "name":"jitsiRoomAdminTag",
